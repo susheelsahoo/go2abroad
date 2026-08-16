@@ -1,0 +1,51 @@
+/* Go2Abroad motion layer: transform and opacity only for smooth rendering. */
+:root{--motion-ease:cubic-bezier(.22,1,.36,1);--motion-duration:700ms}
+[data-reveal]{opacity:0;transform:translate3d(0,26px,0);transition:opacity var(--motion-duration) var(--motion-ease),transform var(--motion-duration) var(--motion-ease);transition-delay:var(--reveal-delay,0ms)}
+[data-reveal].is-visible{opacity:1;transform:none}
+[data-reveal="hero"]{animation:hero-enter 700ms var(--motion-ease) both;animation-delay:var(--hero-delay,0ms)}
+@keyframes hero-enter{from{opacity:0;transform:translate3d(0,20px,0)}to{opacity:1;transform:none}}
+.hero{isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 72% 25%,rgba(81,198,204,.16),transparent 24%),radial-gradient(circle at 25% 80%,rgba(244,124,85,.08),transparent 20%);background-size:140% 140%;animation:hero-light 16s ease-in-out infinite alternate;pointer-events:none}
+@keyframes hero-light{from{background-position:0% 20%}to{background-position:100% 80%}}
+.photo-main{animation:hero-photo-in 900ms var(--motion-ease) 400ms both,hero-float 6s ease-in-out 1.3s infinite}
+@keyframes hero-photo-in{from{opacity:0;transform:scale(.96) translateY(12px)}to{opacity:1;transform:none}}
+@keyframes hero-float{0%,100%{translate:0 0}50%{translate:0 -7px}}
+.header{transition:height 260ms ease,background-color 260ms ease,box-shadow 260ms ease}
+.header.is-scrolled{height:68px;background:rgba(245,244,238,.96);box-shadow:0 8px 24px rgba(16,45,53,.10);backdrop-filter:blur(10px)}
+.desktop-nav a{position:relative;transition:color 220ms ease}
+.desktop-nav a:after{content:"";position:absolute;left:0;right:100%;bottom:-9px;height:2px;background:var(--orange);transition:right 240ms var(--motion-ease)}
+.desktop-nav a:hover:after,.desktop-nav a.active:after{right:0}
+.button,.text-link,.whatsapp-link,.floating-whatsapp,.mobile-sticky a{transition:transform 220ms var(--motion-ease),box-shadow 220ms ease,color 220ms ease,background-color 220ms ease}
+.button:active,.floating-whatsapp:active,.mobile-sticky a:active{transform:scale(.98)}
+.button:hover{box-shadow:0 8px 18px rgba(16,45,53,.14)}
+.destination-card,.university-card,.service-card,.course-card,.insight-feature{transition:transform 280ms var(--motion-ease),box-shadow 280ms ease,border-color 280ms ease}
+.destination-card{overflow:hidden}
+.destination-card:hover,.university-card:hover,.service-card:hover,.course-card:hover,.insight-feature:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(16,45,53,.11)}
+.destination-image,.insight-photo{transition:transform 650ms var(--motion-ease),filter 650ms ease}
+.destination-card:hover .destination-image,.insight-feature:hover .insight-photo{transform:scale(1.04);filter:saturate(1.08)}
+.destination-card .round-arrow,.course-card .course-icon,.insight-feature a{transition:transform 240ms var(--motion-ease),color 240ms ease}
+.destination-card:hover .round-arrow{transform:rotate(8deg) scale(1.08)}
+.course-card:hover .course-icon{transform:translateY(-3px) rotate(-4deg)}
+.insight-feature:hover a{color:var(--orange);transform:translateX(4px)}
+.service-card a,.uni-bottom a,.card-link{transition:color 220ms ease,transform 220ms ease;display:inline-block}
+.service-card:hover a,.university-card:hover .uni-bottom a,.destination-card:hover .card-link{color:var(--orange);transform:translateX(3px)}
+.uni-logo{transition:transform 280ms var(--motion-ease)}
+.university-card:hover .uni-logo{transform:scale(1.06)}
+.faq p{max-height:0;overflow:hidden;opacity:0;margin-top:0;margin-bottom:0;transition:max-height 360ms var(--motion-ease),opacity 260ms ease,margin 360ms ease}
+.faq.open p{max-height:180px;opacity:1;margin-bottom:20px}
+.faq button b{display:inline-block;transition:transform 260ms var(--motion-ease)}
+.faq.open button b{transform:rotate(180deg)}
+.floating-whatsapp{animation:whatsapp-in 600ms var(--motion-ease) 900ms both}
+@keyframes whatsapp-in{from{opacity:0;transform:scale(.8) translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:760px){
+  [data-reveal]{transform:translate3d(0,16px,0);transition-duration:560ms}
+  .hero:before{animation:none;background:radial-gradient(circle at 72% 25%,rgba(81,198,204,.12),transparent 30%)}
+  .photo-main{animation:hero-photo-in 700ms var(--motion-ease) 300ms both}
+  .header.is-scrolled{height:62px}
+  .destination-card:hover,.university-card:hover,.service-card:hover,.course-card:hover,.insight-feature:hover{transform:none;box-shadow:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
+  [data-reveal],[data-reveal].is-visible{opacity:1;transform:none}
+  .hero:before{display:none}
+}
