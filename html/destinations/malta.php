@@ -19,7 +19,7 @@
 <?php $basePath = '../'; include_once dirname(__DIR__) . '/footer.php'; ?>
 </div>
 <script>const b=document.getElementById('menuButton'),n=document.getElementById('mobileNav');b.addEventListener('click',()=>{const o=n.classList.toggle('is-open');b.setAttribute('aria-expanded',o);b.textContent=o?'×':'☰'});</script>
-<script src="../assets/js/site-chrome.js"></script>
+
 </body>
 </html>
 

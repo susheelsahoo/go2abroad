@@ -4,23 +4,23 @@ Static Go2Abroad website built from the `Go2Abroad-Connecting-Dreams.pdf` brand 
 
 ## Pages
 
-- `index.html` — Homepage with destinations, universities, courses, FAQs and lead-generation form.
+- `index.php` — Homepage with destinations, universities, courses, FAQs and lead-generation form.
 - Homepage feedback sections now include portfolio, video/story, testimonial, team, university network, social links and destination/services submenus.
-- `about-us.html` — About page covering the brand purpose, vision, mission, pillars and service ecosystem.
-- `services.html` — Services page covering counselling, applications and visa, student support and career ecosystem.
-- `courses.html` — Course discovery page covering study pathways, fit checks, budget and career-led shortlisting.
-- `portfolio.html` — Student pathway examples, planning framework and responsible outcome messaging.
-- `team.html` — Team roles, working principles and people-first guidance.
-- `university-network.html` — University network examples and profile-based shortlisting lens.
-- `faqs.html` — Accessible FAQ accordion covering common study-abroad questions.
-- `contact-us.html` — Contact details and validated enquiry form.
-- `blog.html` — Guidance journal listing country, budget, career, visa and parent articles.
-- `blog-detail.html` — Detail page for a practical destination-planning guide.
-- `destinations/index.html` — Destination overview page.
-- `destinations/united-kingdom.html` — United Kingdom destination page.
-- `destinations/australia.html` — Australia destination page.
-- `destinations/canada.html` — Canada destination page.
-- `destinations/usa.html` — United States destination page.
+- `about-us.php` — About page covering the brand purpose, vision, mission, pillars and service ecosystem.
+- `services.php` — Services page covering counselling, applications and visa, student support and career ecosystem.
+- `courses.php` — Course discovery page covering study pathways, fit checks, budget and career-led shortlisting.
+- `portfolio.php` — Student pathway examples, planning framework and responsible outcome messaging.
+- `team.php` — Team roles, working principles and people-first guidance.
+- `university-network.php` — University network examples and profile-based shortlisting lens.
+- `faqs.php` — Accessible FAQ accordion covering common study-abroad questions.
+- `contact-us.php` — Contact details and validated enquiry form.
+- `blog.php` — Guidance journal listing country, budget, career, visa and parent articles.
+- `blog-detail.php` — Detail page for a practical destination-planning guide.
+- `destinations/index.php` — Destination overview page.
+- `destinations/united-kingdom.php` — United Kingdom destination page.
+- `destinations/australia.php` — Australia destination page.
+- `destinations/canada.php` — Canada destination page.
+- `destinations/usa.php` — United States destination page.
 
 ## Run locally
 
@@ -33,47 +33,47 @@ Static Go2Abroad website built from the `Go2Abroad-Connecting-Dreams.pdf` brand 
 
 3. Homepage:
 
-   `http://localhost/go2abroad/html/index.html`
+   `http://localhost/go2abroad/html/index.php`
 
 4. About page:
 
-   `http://localhost/go2abroad/html/about-us.html`
+   `http://localhost/go2abroad/html/about-us.php`
 
 5. Services page:
 
-   `http://localhost/go2abroad/html/services.html`
+   `http://localhost/go2abroad/html/services.php`
 
 6. Destinations:
 
-   `http://localhost/go2abroad/html/destinations/index.html`
+   `http://localhost/go2abroad/html/destinations/index.php`
 
 7. Team:
 
-   `http://localhost/go2abroad/html/team.html`
+   `http://localhost/go2abroad/html/team.php`
 
 8. University network:
 
-   `http://localhost/go2abroad/html/university-network.html`
+   `http://localhost/go2abroad/html/university-network.php`
 
 9. FAQs:
 
-   `http://localhost/go2abroad/html/faqs.html`
+   `http://localhost/go2abroad/html/faqs.php`
 
 10. Contact:
 
-   `http://localhost/go2abroad/html/contact-us.html`
+`http://localhost/go2abroad/html/contact-us.php`
 
 11. Blog:
 
-   `http://localhost/go2abroad/html/blog.html`
+`http://localhost/go2abroad/html/blog.php`
 
 12. Blog detail:
 
-   `http://localhost/go2abroad/html/blog-detail.html`
+`http://localhost/go2abroad/html/blog-detail.php`
 
 13. Courses:
 
-   `http://localhost/go2abroad/html/courses.html`
+`http://localhost/go2abroad/html/courses.php`
 
 ### Simple local server
 
@@ -91,7 +91,7 @@ Then open `http://localhost:8000/`.
 - `assets/css/page.css` — shared page styles, brand overrides and navigation submenu styling.
 - `assets/css/animations.css` — animation styles.
 - `assets/js/animations.js` — scroll and reveal animations.
-- `assets/js/site-chrome.js` — shared header, mobile navigation and footer rendered consistently across every page.
+- `header.php` and `footer.php` — shared header, mobile navigation and footer rendered consistently across every page.
 - `assets/css/home-feedback.css` — homepage portfolio, testimonial, team, video, partner and submenu UI.
 - `assets/css/services-ui.css` — Services page layout and responsive UI.
 - `assets/css/portfolio-ui.css` — Portfolio page layout and responsive UI.
@@ -106,7 +106,7 @@ The homepage form currently validates the visitor’s name, email, phone, course
 
 `hello@go2abroad.com`
 
-For production, replace the `mailto:` handling in `index.html` with a secure backend or CRM endpoint. The production endpoint should include:
+For production, replace the `mailto:` handling in `index.php` with a secure backend or CRM endpoint. The production endpoint should include:
 
 - Server-side validation and sanitisation.
 - Spam protection such as CAPTCHA or rate limiting.

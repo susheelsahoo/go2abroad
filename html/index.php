@@ -13,12 +13,17 @@
     <link rel="stylesheet" href="assets/css/animations.css" />
     <link rel="stylesheet" href="assets/css/page.css" />
     <link rel="stylesheet" href="assets/css/home-feedback.css" />
+    <link rel="stylesheet" href="assets/css/homepage-order.css" />
+    <link rel="stylesheet" href="assets/css/process-ui.css" />
+    <link rel="stylesheet" href="assets/css/team-ui.css" />
+    <link rel="stylesheet" href="assets/css/header-ui.css" />
+    <link rel="stylesheet" href="assets/css/home-portfolio.css" />
   </head>
   <body>
     <div class="site-shell">
       <?php $basePath = ''; include_once __DIR__ . '/header.php'; ?>
       <main id="top">
-        <section class="hero hero-slider" aria-label="Go2Abroad destinations">
+<section class="hero hero-slider" aria-label="Go2Abroad destinations">
           <div class="hero-track" aria-live="polite">
             <article class="hero-slide is-active" data-slide="0">
               <div class="hero-copy">
@@ -41,58 +46,87 @@
           </div>
           <div class="hero-slider-controls"><button class="hero-arrow" type="button" data-slide-prev aria-label="Previous slide">←</button><div class="hero-dots" role="tablist" aria-label="Choose hero slide"><button class="hero-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Slide 1" data-slide-to="0"></button><button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 2" data-slide-to="1"></button><button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 3" data-slide-to="2"></button></div><button class="hero-arrow" type="button" data-slide-next aria-label="Next slide">→</button></div>
         </section>
-        <section class="search-panel">
-          <div>
-            <p class="eyebrow">FIND YOUR FIT</p>
-            <h2>Where will your<br /><em>story take you?</em></h2>
-            <p class="lead-intro">
-              Share a few details and get clear, profile-based guidance on your
-              country, course and next steps.
-            </p>
+<section class="home-portfolio" id="portfolio">
+          <div class="home-portfolio-heading">
+            <div>
+              <p class="eyebrow">OUR PORTFOLIO · PATHWAYS WITH PURPOSE</p>
+              <h2>Plans built around<br /><em>your next move.</em></h2>
+            </div>
+            <a class="text-link" href="portfolio.php">Explore our portfolio ↗</a>
           </div>
-          <form class="search-form lead-form" id="leadForm">
-            <label>
-              Your name
-              <input type="text" name="name" placeholder="e.g. Priya Sharma" autocomplete="name" required />
-            </label>
-            <label>
-              Email address
-              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
-            </label>
-            <label>
-              Phone number
-              <input type="tel" name="phone" placeholder="+91 98765 43210" autocomplete="tel" required />
-            </label>
-            <label>
-              I'm interested in
-              <select name="course" required>
-                <option value="" selected disabled>Select a course</option>
-                <option>Computer Science</option>
-                <option>Business & Management</option>
-                <option>Engineering</option>
-              </select>
-            </label>
-            <label>
-              I want to study in
-              <select name="destination" required>
-                <option value="" selected disabled>Select a destination</option>
-                <option>United Kingdom</option>
-                <option>Australia</option>
-                <option>Canada</option>
-              </select>
-            </label>
-            <button class="button button-dark" type="submit">Get my free roadmap →</button>
-            <p class="lead-form-status" id="leadFormStatus" role="status" aria-live="polite"></p>
-            <span class="lead-form-note">Free guidance · No commitment · Reply within one working day</span>
-          </form>
+          <div class="home-portfolio-grid">
+            <article class="home-portfolio-card home-portfolio-featured">
+              <span class="home-portfolio-index">01 · PROFILE TO PLAN</span>
+              <div>
+                <h3>From your profile to a focused shortlist.</h3>
+                <p>We connect your goals, academic background and budget to destinations and courses that genuinely fit.</p>
+              </div>
+              <a href="portfolio.php#pathways">See the pathway <span>↗</span></a>
+            </article>
+            <article class="home-portfolio-card">
+              <span class="home-portfolio-index">02 · APPLICATION READY</span>
+              <div>
+                <h3>Every detail, ready for the next step.</h3>
+                <p>From documents to submission, get practical guidance that keeps your application moving.</p>
+              </div>
+              <a href="portfolio.php#framework">Explore our framework <span>↗</span></a>
+            </article>
+            <article class="home-portfolio-card home-portfolio-accent">
+              <span class="home-portfolio-index">03 · BEYOND THE OFFER</span>
+              <div>
+                <h3>Support that continues after admission.</h3>
+                <p>Prepare for visas, travel and arrival with a plan that stays connected to your future.</p>
+              </div>
+              <a href="#counselling">Start a conversation <span>↗</span></a>
+            </article>
+          </div>
         </section>
-        <section class="stats">
-          <div><strong>1:1</strong><span>Personal guidance</span></div>
-          <div><strong>4.9/5</strong><span>Student experience</span></div>
-          <div><strong>20+</strong><span>Study destinations</span></div>
-          <div><strong>∞</strong><span>Possibilities ahead</span></div>
+<section class="stats">
+          <div><strong>20+</strong><span>Total countries</span></div>
+          <div><strong>500+</strong><span>Courses selected</span></div>
+          <div><strong>1,000+</strong><span>Students guided</span></div>
+          <div><strong>95%</strong><span>Student satisfaction</span></div>
         </section>
-        <section class="section" id="destinations">
+<section class="why-section" id="about-us">
+          <div class="why-intro">
+            <p class="eyebrow">ABOUT US · WHY CHOOSE GO2ABROAD</p>
+            <h2>Why choose<br /><em>Go2Abroad.</em></h2>
+            <p>
+              There is a lot to figure out. You do not have to figure it out
+              alone. We bring clarity, care and local know-how to every step.
+            </p>
+            <a class="button button-outline" href="#counselling"
+              >Meet your counsellor ↗</a
+            >
+          </div>
+          <div class="service-grid">
+            <div class="service-card highlight">
+              <span class="icon">✦</span>
+              <h3>Expert counselling</h3>
+              <p>A clear, personal plan for your global education goals.</p>
+              <a href="#counselling">Learn more →</a>
+            </div>
+            <div class="service-card">
+              <span class="icon">⌖</span>
+              <h3>University selection</h3>
+              <p>Find a course and campus that fit your ambitions.</p>
+              <a href="#universities">Learn more →</a>
+            </div>
+            <div class="service-card">
+              <span class="icon">↗</span>
+              <h3>Application assistance</h3>
+              <p>Confident support from shortlist to submission.</p>
+              <a href="#counselling">Learn more →</a>
+            </div>
+            <div class="service-card">
+              <span class="icon">◎</span>
+              <h3>Visa guidance</h3>
+              <p>Support for every important step.</p>
+              <a href="#counselling">Learn more →</a>
+            </div>
+          </div>
+        </section>
+<section class="section" id="destinations">
           <div class="section-heading">
             <div>
               <p class="eyebrow">OPEN A NEW DOOR</p>
@@ -170,46 +204,7 @@
             >
           </div>
         </section>
-        <section class="why-section" id="services">
-          <div class="why-intro">
-            <p class="eyebrow">MORE THAN A PLAN</p>
-            <h2>Big dreams need<br /><em>good people.</em></h2>
-            <p>
-              There is a lot to figure out. You do not have to figure it out
-              alone. We bring clarity, care and local know-how to every step.
-            </p>
-            <a class="button button-outline" href="#counselling"
-              >Meet your counsellor ↗</a
-            >
-          </div>
-          <div class="service-grid">
-            <div class="service-card highlight">
-              <span class="icon">✦</span>
-              <h3>Expert counselling</h3>
-              <p>A clear, personal plan for your global education goals.</p>
-              <a href="#counselling">Learn more →</a>
-            </div>
-            <div class="service-card">
-              <span class="icon">⌖</span>
-              <h3>University selection</h3>
-              <p>Find a course and campus that fit your ambitions.</p>
-              <a href="#universities">Learn more →</a>
-            </div>
-            <div class="service-card">
-              <span class="icon">↗</span>
-              <h3>Application assistance</h3>
-              <p>Confident support from shortlist to submission.</p>
-              <a href="#counselling">Learn more →</a>
-            </div>
-            <div class="service-card">
-              <span class="icon">◎</span>
-              <h3>Visa guidance</h3>
-              <p>Practical guidance for your next important step.</p>
-              <a href="#counselling">Learn more →</a>
-            </div>
-          </div>
-        </section>
-        <section class="section university-section" id="universities">
+<section class="section university-section" id="universities">
           <div class="section-heading">
             <div>
               <p class="eyebrow">THE RIGHT FIT</p>
@@ -265,61 +260,10 @@
             </article>
           </div>
         </section>
-        <section class="partners-section" id="partners">
-          <div class="section-heading partners-heading"><div><p class="eyebrow">GLOBAL UNIVERSITY NETWORK</p><h2>Good choices start<br /><em>with the right fit.</em></h2></div><a class="text-link" href="#counselling">Build my shortlist ↗</a></div>
-          <div class="partner-rail"><span>University of Manchester</span><span>MONASH UNIVERSITY</span><span>UNIVERSITY OF TORONTO</span><span>UCL</span><span>DEAKIN UNIVERSITY</span><span>YORK UNIVERSITY</span></div>
-          <p class="partner-note">We help you compare institutions and courses responsibly. Final availability and eligibility are confirmed during your profile review.</p>
-        </section>
-        <section class="portfolio-section" id="portfolio">
-          <div class="section-heading"><div><p class="eyebrow">OUR PORTFOLIO</p><h2>Support for every<br /><em>important step.</em></h2></div><a class="text-link" href="#counselling">Talk to our team ↗</a></div>
-          <div class="portfolio-grid"><article class="portfolio-card portfolio-featured"><span class="portfolio-index">01</span><div><h3>Profile to shortlist</h3><p>Understand your strengths, goals and budget before choosing a country, course or university.</p><b>Start with a profile review ↗</b></div></article><article class="portfolio-card"><span class="portfolio-index">02</span><div><h3>Application to offer</h3><p>Organise documents, applications and decisions with a clear owner for every next step.</p><b>Plan your application ↗</b></div></article><article class="portfolio-card"><span class="portfolio-index">03</span><div><h3>Visa to arrival</h3><p>Prepare for the practical journey beyond admission — from visa readiness to your first day abroad.</p><b>Prepare with confidence ↗</b></div></article></div>
-        </section>
-        <section class="video-section" id="video">
-          <div class="video-copy"><p class="eyebrow light">SEE THE JOURNEY</p><h2>Every big move<br />starts with a<br /><em>conversation.</em></h2><p>Meet the people and process behind a more responsible study abroad experience.</p><a class="button button-accent" href="#counselling">Start your conversation ↗</a></div>
-          <div class="video-frame"><div class="video-poster"></div><span class="video-play" aria-hidden="true">▶</span><span>GO2ABROAD · CONNECTING DREAMS</span></div>
-        </section>
-        <section class="testimonial-section" id="testimonials">
-          <div class="testimonial-photo"></div><div class="testimonial-copy"><p class="eyebrow light">STUDENT STORY</p><span class="quote-mark">“</span><blockquote>They helped me turn a confusing list of options into a plan I could actually believe in.</blockquote><div class="testimonial-person"><span>AS</span><p><strong>Ananya Sharma</strong><br />MSc Data Science · United Kingdom</p></div><div class="testimonial-meta"><span>01</span><i></i><span>Student experience</span></div></div>
-        </section>
-        <section class="team-section" id="team">
-          <div class="section-heading"><div><p class="eyebrow">THE PEOPLE BEHIND THE PLAN</p><h2>Good guidance<br /><em>starts with good people.</em></h2></div><a class="text-link" href="#counselling">Meet the team ↗</a></div>
-          <div class="team-grid"><article class="team-card"><div class="team-photo team-photo-one"></div><div><h3>Neeraj Singh</h3><p>Founder & Global Education Advisor</p></div></article><article class="team-card"><div class="team-photo team-photo-two"></div><div><h3>Admissions team</h3><p>Profile, course & university guidance</p></div></article><article class="team-card"><div class="team-photo team-photo-three"></div><div><h3>Student success team</h3><p>Visa, travel & arrival support</p></div></article></div>
-        </section>
-        <section class="course-strip" id="courses">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow light">FOLLOW YOUR CURIOSITY</p>
-              <h2>Start with what<br /><em>moves you.</em></h2>
-            </div>
-          </div>
-          <div class="course-grid">
-            <a class="course-card" href="#counselling"
-              ><span class="course-icon">⌘</span>
-              <h3>Computer Science</h3>
-              <p>Build the future with a degree in technology.</p>
-              <span>Explore course →</span></a
-            ><a class="course-card" href="#counselling"
-              ><span class="course-icon">↗</span>
-              <h3>Business & Management</h3>
-              <p>Turn ideas into impact across the world.</p>
-              <span>Explore course →</span></a
-            ><a class="course-card" href="#counselling"
-              ><span class="course-icon">⌁</span>
-              <h3>Engineering</h3>
-              <p>Design solutions for a changing world.</p>
-              <span>Explore course →</span></a
-            ><a class="course-card" href="#counselling"
-              ><span class="course-icon">+</span>
-              <h3>Healthcare</h3>
-              <p>Make a difference where it matters most.</p>
-              <span>Explore course →</span></a
-            >
-          </div>
-        </section>
-        <section class="journey section">
+<section class="journey section process-graph">
           <div class="journey-copy">
-            <p class="eyebrow">ONE STEP AT A TIME</p>
-            <h2>Your journey,<br /><em>simplified.</em></h2>
+            <p class="eyebrow">OUR PROCESS</p>
+            <h2>Your journey,<br /><em>mapped out.</em></h2>
             <p>
               From your first question to your first day on campus, we are here
               to make every step feel possible.
@@ -366,7 +310,10 @@
             </div>
           </div>
         </section>
-        <section class="faq-section" id="faqs">
+<section class="testimonial-section" id="success-stories">
+          <div class="testimonial-photo"></div><div class="testimonial-copy"><p class="eyebrow light">SUCCESS STORIES · STUDENT FEEDBACK</p><span class="quote-mark">“</span><blockquote>They helped me turn a confusing list of options into a plan I could actually believe in.</blockquote><div class="testimonial-person"><span>AS</span><p><strong>Ananya Sharma</strong><br />MSc Data Science · United Kingdom</p></div><div class="testimonial-meta"><span>01</span><i></i><span>Student experience</span></div></div>
+        </section>
+<section class="faq-section" id="faqs">
           <div>
             <p class="eyebrow">NO QUESTION IS TOO SMALL</p>
             <h2>Let's clear<br />a few things <em>up.</em></h2>
@@ -404,37 +351,76 @@
             </div>
           </div>
         </section>
-        <section class="cta-section" id="counselling">
+<section class="team-section" id="team">
+          <div class="section-heading"><div><p class="eyebrow">OUR TEAM · PEOPLE BEHIND THE PLAN</p><h2>Meet the team<br /><em>behind your progress.</em></h2></div><a class="text-link" href="#counselling">Meet the team ↗</a></div>
+          <div class="team-grid"><article class="team-card"><div class="team-photo team-photo-one"></div><div><h3>Neeraj Singh</h3><p>Founder & Global Education Advisor</p></div></article><article class="team-card"><div class="team-photo team-photo-two"></div><div><h3>Admissions team</h3><p>Profile, course & university guidance</p></div></article><article class="team-card"><div class="team-photo team-photo-three"></div><div><h3>Student success team</h3><p>Visa, travel & arrival support</p></div></article></div>
+        </section>
+<section class="search-panel lead-section" id="counselling">
           <div>
-            <p class="eyebrow light">THE FIRST STEP IS YOURS</p>
-            <h2>Ready to make<br /><em>it real?</em></h2>
-            <p>
-              Bring us your questions, your hopes and your maybe. We will help
-              you find what is next.
+            <p class="eyebrow">INQUIRY / LEAD FORM</p>
+            <h2>Tell us about your<br /><em>next step.</em></h2>
+            <p class="lead-intro">
+              Share a few details and get clear, profile-based guidance on your
+              country, course and next steps.
             </p>
           </div>
-          <div class="cta-actions">
-            <a class="button button-accent" href="mailto:hello@go2abroad.com"
-              >Book free counselling ↗</a
-            ><a class="whatsapp-link" href="https://wa.me/0000000000"
-              >◉ &nbsp; Chat on WhatsApp</a
-            >
-          </div>
+          <form class="search-form lead-form" id="leadForm">
+            <label>
+              Your name
+              <input type="text" name="name" placeholder="e.g. Priya Sharma" autocomplete="name" required />
+            </label>
+            <label>
+              Email address
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            </label>
+            <label>
+              Phone number
+              <input type="tel" name="phone" placeholder="+91 98765 43210" autocomplete="tel" required />
+            </label>
+            <label>
+              I'm interested in
+              <select name="course" required>
+                <option value="" selected disabled>Select a course</option>
+                <option>Computer Science</option>
+                <option>Business & Management</option>
+                <option>Engineering</option>
+              </select>
+            </label>
+            <label>
+              I want to study in
+              <select name="destination" required>
+                <option value="" selected disabled>Select a destination</option>
+                <option>United Kingdom</option>
+                <option>Australia</option>
+                <option>Canada</option>
+              </select>
+            </label>
+            <button class="button button-dark" type="submit">Get my free roadmap →</button>
+            <p class="lead-form-status" id="leadFormStatus" role="status" aria-live="polite"></p>
+            <span class="lead-form-note">Free guidance · No commitment · Reply within one working day</span>
+          </form>
         </section>
-      </main>
-      <?php $basePath = ''; include_once __DIR__ . '/footer.php'; ?>
-      <a
-        class="floating-whatsapp"
-        href="https://wa.me/0000000000"
-        aria-label="Chat with Go2Abroad on WhatsApp"
-        >◉</a
-      >
-      <div class="mobile-sticky">
-        <a href="https://wa.me/0000000000">◉ WhatsApp</a
-        ><a href="#counselling">Book counselling</a>
+<section class="map-address-section" id="address">
+  <div class="map-address-container">
+    <div class="map-address-copy">
+      <p class="eyebrow">FIND US</p>
+      <h2>Let’s make the<br /><em>next step clear.</em></h2>
+      <p>Visit our counselling team or reach out to plan your study abroad journey.</p>
+      <div class="address-details">
+        <div><span>ADDRESS</span><strong>Go2Abroad Education Consultants<br>India</strong></div>
+        <div><span>EMAIL</span><a href="mailto:info@go2abroad.co">info@go2abroad.co</a></div>
+        <div><span>WHATSAPP</span><a href="https://wa.me/0000000000">Chat with our team ↗</a></div>
       </div>
     </div>
-    <script>
+    <div class="map-placeholder" role="img" aria-label="Map showing the Go2Abroad office location">
+      <div class="map-grid"></div><div class="map-pin">✦</div><span>Go2Abroad<br><small>India</small></span>
+    </div>
+  </div>
+</section>
+</main>
+    <?php $basePath = ''; include_once __DIR__ . '/footer.php'; ?>
+  </div>
+<script>
       const menuButton = document.getElementById("menuButton");
       const mobileNav = document.getElementById("mobileNav");
       menuButton.addEventListener("click", () => {
@@ -490,7 +476,5 @@
       });
     </script>
     <script src="assets/js/animations.js"></script>
-  <script src="assets/js/site-chrome.js"></script>
 </body>
 </html>
-

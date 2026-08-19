@@ -187,17 +187,17 @@ The working site lives at:
 
 Current important files:
 
-- `index.html` — homepage.
-- `about-us.html` — brand, purpose, vision, mission and pillars.
-- `services.html` — service architecture and process.
-- `courses.html` — course pathways, profile-based checks and planning journey.
-- `portfolio.html` — student pathway examples and planning framework.
-- `team.html` — team roles and people-first guidance.
-- `university-network.html` — university network examples and shortlisting lens.
-- `faqs.html` — FAQ accordion.
-- `contact-us.html` — contact details and enquiry form.
-- `blog.html` — guidance journal listing.
-- `blog-detail.html` — blog article detail page.
+- `index.php` — homepage.
+- `about-us.php` — brand, purpose, vision, mission and pillars.
+- `services.php` — service architecture and process.
+- `courses.php` — course pathways, profile-based checks and planning journey.
+- `portfolio.php` — student pathway examples and planning framework.
+- `team.php` — team roles and people-first guidance.
+- `university-network.php` — university network examples and shortlisting lens.
+- `faqs.php` — FAQ accordion.
+- `contact-us.php` — contact details and enquiry form.
+- `blog.php` — guidance journal listing.
+- `blog-detail.php` — blog article detail page.
 - `destinations/` — destination overview and country pages.
 - `assets/css/globals.css` — shared base styles.
 - `assets/css/page.css` — shared page styles.
@@ -208,6 +208,6 @@ Current important files:
 - `assets/css/blog-ui.css` — Blog listing and article detail styles.
 - `assets/css/courses-ui.css` — Course discovery page styles.
 - `assets/js/animations.js` — lightweight reveal animations.
-- `assets/js/site-chrome.js` — shared header, mobile navigation and footer markup for all HTML pages.
+- `header.php` and `footer.php` — shared header, mobile navigation and footer markup for all PHP pages.
 
 Use the existing brand assets and styles before creating new ones. Keep new pages visually consistent with the PDF and update `readme.md` when adding routes, assets or production requirements.

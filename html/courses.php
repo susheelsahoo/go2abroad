@@ -35,7 +35,7 @@
       <?php $basePath = ''; include_once __DIR__ . '/footer.php'; ?>
     </div>
     <script src="assets/js/animations.js"></script>
-    <script src="assets/js/site-chrome.js"></script>
+    
   </body>
 </html>
 

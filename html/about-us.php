@@ -40,7 +40,7 @@
       menuButton.addEventListener("click", () => { const isOpen = mobileNav.classList.toggle("is-open"); menuButton.setAttribute("aria-expanded", isOpen); menuButton.textContent = isOpen ? "×" : "☰"; });
       document.querySelectorAll(".mobile-nav a").forEach((link) => link.addEventListener("click", () => mobileNav.classList.remove("is-open")));
     </script>
-  <script src="assets/js/site-chrome.js"></script>
+  
 </body>
 </html>
 

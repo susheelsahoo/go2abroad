@@ -711,7 +711,7 @@ select {
 .journey {
   display: grid;
   grid-template-columns: 34% 1fr;
-  gap: 13%;
+  gap: 8%;
   padding-top: 126px;
   padding-bottom: 126px;
 }
@@ -980,6 +980,125 @@ select {
 .mobile-sticky {
   display: none;
 }
+
+/* Homepage section surfaces: each band has its own quiet role in the brand palette. */
+.hero {
+  background:
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(67, 191, 208, 0.22),
+      transparent 30%
+    ),
+    linear-gradient(135deg, #075f78 0%, var(--blue) 58%, #11657a 100%);
+}
+
+.search-panel {
+  background: #fffdfa;
+  border: 1px solid rgba(16, 45, 53, 0.06);
+}
+
+.stats {
+  width: 100%;
+  padding-left: 9%;
+  padding-right: 9%;
+  background: #edf6f3;
+  border-bottom-color: #d4e5df;
+}
+
+.section {
+  width: 100%;
+  padding-left: 9%;
+  padding-right: 9%;
+  position: relative;
+}
+
+#study-destinations {
+  background:
+    radial-gradient(circle at 8% 14%, rgba(67, 191, 208, 0.1), transparent 28%),
+    var(--cream);
+}
+
+.why-section {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 42%), #dfeae1;
+}
+
+.university-section {
+  background: #eef4f5;
+}
+
+.course-strip {
+  background:
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(67, 191, 208, 0.16),
+      transparent 28%
+    ),
+    linear-gradient(135deg, #0d3038 0%, var(--ink) 62%, #123f49 100%);
+}
+
+.journey {
+  background-color: #fbfaf5;
+  background-image:
+    linear-gradient(rgba(16, 45, 53, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 45, 53, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.story-section {
+  background: linear-gradient(110deg, #126d7c 0%, #0d6171 55%, #0b5565 100%);
+}
+
+.insights {
+  background: #f7f1e9;
+}
+
+.faq-section {
+  background:
+    radial-gradient(
+      circle at 92% 20%,
+      rgba(67, 191, 208, 0.12),
+      transparent 25%
+    ),
+    #e7f0ee;
+}
+
+.cta-section {
+  background:
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(67, 191, 208, 0.24),
+      transparent 27%
+    ),
+    linear-gradient(120deg, #08627b 0%, var(--blue) 100%);
+}
+
+@media (max-width: 1050px) {
+  .section {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .stats {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
+
+@media (max-width: 760px) {
+  .stats {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .section {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 @media (max-width: 1050px) {
   .desktop-nav {
     gap: 11px;
@@ -1484,5 +1603,44 @@ select {
   }
   .footer-links a {
     font-size: 13px;
+  }
+}
+
+/* Keep the section surfaces full-bleed at every breakpoint. */
+.section {
+  width: 100%;
+  padding-left: 9%;
+  padding-right: 9%;
+}
+
+.stats {
+  width: 100%;
+  padding-left: 9%;
+  padding-right: 9%;
+}
+
+@media (max-width: 1050px) {
+  .section {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .stats {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
+
+@media (max-width: 760px) {
+  .section {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .stats {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 }

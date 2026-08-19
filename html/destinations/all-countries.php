@@ -51,7 +51,7 @@
     </main>
     <?php $basePath = '../'; include_once dirname(__DIR__) . '/footer.php'; ?>
   </div>
-  <script src="../assets/js/site-chrome.js"></script>
+  
 </body>
 </html>
 

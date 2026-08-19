@@ -1,0 +1,20 @@
+/* Keep the site header sticky without letting the page shell become its scroll container. */
+.site-shell {
+  overflow: clip;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+@media (max-width: 760px) {
+  .header {
+    z-index: 1000;
+  }
+
+  .mobile-nav {
+    z-index: 999;
+  }
+}
