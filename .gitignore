@@ -25,3 +25,4 @@ pnpm-debug.log*
 
 # TypeScript build output
 *.tsbuildinfo
+html/Archive.zip

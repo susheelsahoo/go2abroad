@@ -26,6 +26,32 @@ Mission: Guide each student with transparent counselling, responsible shortlisti
 
 Tagline: `Connecting Dreams`
 
+## LIST OF COUNTRIES GO2ABROAD CATTERS
+
+LIST OF COUNTRIES GO2ABROAD CATTERS
+
+Study in Australia\_ Embrace the Culture and Top-Notch Education Down Under.docx
+
+1. United States of America
+2. Australia
+3. Canada
+4. United Kingdom
+5. New Zealand
+6. Singapore
+7. France
+8. Sweden
+9. Netherlands
+10. Austria
+11. Denmark
+12. Finland
+13. Malaysia
+14. Mauritius
+15. China
+16. Vietnam
+17. Japan
+18. Malta
+19. Georgia
+
 ## Audience
 
 Design and write for:

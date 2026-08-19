@@ -12,19 +12,11 @@
   </head>
   <body class="about-page">
     <div class="site-shell">
-      <div class="announcement"><span>✦</span> Clear guidance for your global education journey <a href="index.html#counselling">Book a free consultation →</a></div>
-      <header class="header">
-        <a class="brand" href="index.html#top"><img class="site-logo" src="assets/images/logo.jpeg" alt="Go2Abroad" /></a>
-        <nav class="desktop-nav">
-          <a href="index.html#top">Home</a><a class="active" href="about-us.html">About us</a><a href="index.html#destinations">Destinations</a><a href="index.html#universities">Universities</a><a href="index.html#courses">Courses</a><a href="index.html#faqs">FAQs</a>
-        </nav>
-        <div class="header-actions"><a class="button button-small" href="index.html#counselling">Book free counselling</a><button class="menu-button" id="menuButton" type="button" aria-label="Open navigation menu" aria-controls="mobileNav" aria-expanded="false">☰</button></div>
-      </header>
-      <nav class="mobile-nav" id="mobileNav"><a href="index.html#top">Home</a><a href="about-us.html">About us</a><a href="index.html#destinations">Destinations</a><a href="index.html#universities">Universities</a><a href="index.html#courses">Courses</a><a href="index.html#faqs">FAQs</a><a class="button" href="index.html#counselling">Book free counselling</a></nav>
+      <?php $basePath = ''; include_once __DIR__ . '/header.php'; ?>
 
       <main>
         <section class="about-hero">
-          <div class="about-hero-copy"><p class="eyebrow light">ABOUT GO2ABROAD</p><h1>Connecting<br /><em>dreams.</em></h1><p class="about-hero-lede">A dream becomes real when it has a plan, proof and people who take responsibility.</p><a class="button button-accent" href="index.html#counselling">Start with clarity <span>↗</span></a></div>
+          <div class="about-hero-copy"><p class="eyebrow light">ABOUT GO2ABROAD</p><h1>Connecting<br /><em>dreams.</em></h1><p class="about-hero-lede">A dream becomes real when it has a plan, proof and people who take responsibility.</p><a class="button button-accent" href="index.php#counselling">Start with clarity <span>↗</span></a></div>
           <div class="about-hero-visual"><div class="about-orbit orbit-one"></div><div class="about-orbit orbit-two"></div><div class="about-stat-card"><span class="about-card-label">OUR PROMISE</span><strong>No confusion.<br />No false promises.</strong><small>Just honest guidance and clear ownership.</small></div><div class="about-photo"></div><span class="about-hero-tag">PLAN · PREPARE · PROGRESS</span></div>
         </section>
 
@@ -38,9 +30,9 @@
 
         <section class="ecosystem-section about-container"><div class="about-section-heading"><p class="eyebrow">MORE THAN ADMISSIONS</p><h2>A team for every<br /><em>next step.</em></h2></div><div class="ecosystem-list"><div><span>01</span><h3>Core counselling</h3><p>Eligibility assessment, profile evaluation, country and course shortlisting, budget and timeline planning.</p></div><div><span>02</span><h3>Applications & visa</h3><p>Applications, SOP/LOR/CV support, offer tracking, financial files, visa checklists and interview readiness.</p></div><div><span>03</span><h3>Student support</h3><p>Education loans, forex, accommodation, flights, pre-departure preparation, arrival checklists and emergency support.</p></div><div><span>04</span><h3>Career ecosystem</h3><p>CV and LinkedIn guidance, networking, alumni connections, current-student connects and career sessions.</p></div></div></section>
 
-        <section class="about-cta"><div><p class="eyebrow light">YOUR NEXT CHAPTER STARTS HERE</p><h2>Bring us your<br /><em>big maybe.</em></h2></div><div class="about-cta-copy"><p>Tell us where you want to go. We’ll help you understand what it takes to get there.</p><a class="button button-accent" href="index.html#counselling">Book free counselling ↗</a></div></section>
+        <section class="about-cta"><div><p class="eyebrow light">YOUR NEXT CHAPTER STARTS HERE</p><h2>Bring us your<br /><em>big maybe.</em></h2></div><div class="about-cta-copy"><p>Tell us where you want to go. We’ll help you understand what it takes to get there.</p><a class="button button-accent" href="index.php#counselling">Book free counselling ↗</a></div></section>
       </main>
-      <footer class="footer"><div class="footer-brand"><a class="brand" href="index.html#top"><img class="site-logo" src="assets/images/logo.jpeg" alt="Go2Abroad" /></a><p>Connecting dreams with clear, responsible global education guidance.</p><span class="copyright">© 2024 Go2Abroad. Connecting Dreams.</span></div><div class="footer-links"><div><b>Explore</b><a href="about-us.html">About us</a><a href="index.html#destinations">Destinations</a><a href="index.html#courses">Courses</a></div><div><b>Support</b><a href="index.html#counselling">Free counselling</a><a href="index.html#faqs">FAQs</a><a href="mailto:info@go2abroad.co">Contact us</a></div><div><b>Say hello</b><a href="mailto:info@go2abroad.co">info@go2abroad.co</a><a href="https://www.instagram.com/go2abroad_">Instagram ↗</a></div></div></footer>
+      <?php $basePath = ''; include_once __DIR__ . '/footer.php'; ?>
     </div>
     <script>
       const menuButton = document.getElementById("menuButton");
@@ -51,4 +43,5 @@
   <script src="assets/js/site-chrome.js"></script>
 </body>
 </html>
+
 

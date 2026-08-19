@@ -35,6 +35,8 @@ body {
   top: calc(100% - 1px);
   left: -20px;
   min-width: 220px;
+  max-height: min(72vh, 620px);
+  overflow-y: auto;
   padding: 10px;
   border: 1px solid rgba(165, 186, 218, .45);
   border-top: 3px solid var(--aqua);
@@ -115,6 +117,96 @@ body {
   pointer-events: auto;
   transform: translateY(0);
 }
+
+/* Destination mega-menu: compact, scannable and visually distinct from the services menu. */
+.desktop-nav .nav-destination-menu {
+  right: -52px;
+  left: auto;
+  width: min(760px, calc(100vw - 40px));
+  min-width: 0;
+  max-height: none;
+  padding: 22px;
+  border-top-width: 4px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #ffffff 0%, #f5faff 100%);
+  box-shadow: 0 24px 60px rgba(1, 62, 83, .2), 0 4px 12px rgba(1, 62, 83, .08);
+}
+
+.desktop-nav .nav-destination-menu::before {
+  right: 58px;
+  left: auto;
+  border-radius: 2px 0 0 0;
+}
+
+.nav-menu-heading {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 5px 18px;
+  align-items: end;
+  margin: 0 4px 16px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid #dbe8ef;
+}
+
+.nav-menu-kicker {
+  grid-column: 1 / -1;
+  color: var(--aqua);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.nav-menu-heading strong {
+  color: var(--ink);
+  font-size: 18px;
+  letter-spacing: -.03em;
+}
+
+.desktop-nav .nav-menu-heading > a {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  padding: 0 !important;
+  color: var(--aqua) !important;
+  font-size: 10px !important;
+  font-weight: 800;
+}
+
+.desktop-nav .nav-menu-heading > a::after { display: none !important; }
+
+.nav-country-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.desktop-nav .nav-country-grid > a {
+  display: grid !important;
+  grid-template-columns: 25px minmax(0, 1fr) 14px;
+  gap: 8px;
+  align-items: center;
+  min-height: 42px;
+  padding: 9px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--ink) !important;
+  font-size: 10px !important;
+  font-weight: 700;
+  white-space: normal;
+}
+
+.desktop-nav .nav-country-grid > a:hover,
+.desktop-nav .nav-country-grid > a:focus-visible {
+  padding-left: 10px;
+  border-color: #c7e0eb;
+  background: #eaf5fa;
+  color: var(--aqua) !important;
+}
+
+.desktop-nav .nav-country-grid > a::after { display: none; }
+.nav-country-index { color: var(--sky); font-size: 9px; font-weight: 800; }
+.nav-country-name { overflow-wrap: anywhere; }
+.nav-country-arrow { color: var(--orange); font-size: 12px; text-align: right; }
 
 /* Keep every navigation item on one baseline and remove the gold active underline. */
 .header .desktop-nav {
@@ -439,3 +531,14 @@ body {
     font-size: 12px;
   }
 }
+
+.destination-new-zealand-page{--destination-photo:url('https://images.unsplash.com/photo-1469521669194-babb45599def?auto=format&fit=crop&w=900&q=85')}.destination-singapore-page{--destination-photo:url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=900&q=85')}.destination-france-page{--destination-photo:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=85')}.destination-sweden-page{--destination-photo:url('https://images.unsplash.com/photo-1509356843151-3e7d96241e11?auto=format&fit=crop&w=900&q=85')}.destination-netherlands-page{--destination-photo:url('https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=900&q=85')}.destination-austria-page{--destination-photo:url('https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=900&q=85')}.destination-denmark-page{--destination-photo:url('https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=900&q=85')}.destination-finland-page{--destination-photo:url('https://images.unsplash.com/photo-1512413316925-fd9b7f2a2e5c?auto=format&fit=crop&w=900&q=85')}.destination-malaysia-page{--destination-photo:url('https://images.unsplash.com/photo-1508039858849-2c6f8c56f7b2?auto=format&fit=crop&w=900&q=85')}.destination-mauritius-page{--destination-photo:url('https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=900&q=85')}.destination-china-page{--destination-photo:url('https://images.unsplash.com/photo-1508804185872-d7aadf498b2e?auto=format&fit=crop&w=900&q=85')}.destination-vietnam-page{--destination-photo:url('https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&q=85')}.destination-japan-page{--destination-photo:url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=85')}.destination-malta-page{--destination-photo:url('https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=900&q=85')}.destination-georgia-page{--destination-photo:url('https://images.unsplash.com/photo-1565008576549-57569a49371d?auto=format&fit=crop&w=900&q=85')}
+.country-directory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.country-directory-grid a{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:700;transition:transform .2s,box-shadow .2s}.country-directory-grid a:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(1,62,83,.1)}.country-directory-grid span{color:var(--orange);font-size:18px}
+@media(max-width:760px){.country-directory-grid{grid-template-columns:1fr}.country-directory-grid a{padding:17px 18px;font-size:12px}}
+
+/* Homepage hero slider */
+.hero-slider{position:relative;display:block;min-height:635px;padding:0;overflow:hidden}.hero-track{position:absolute;inset:0}.hero-slide{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;padding:86px 9% 60px;opacity:0;visibility:hidden;transform:translateX(28px);transition:opacity .55s ease,transform .65s ease,visibility .55s ease}.hero-slide.is-active{opacity:1;visibility:visible;transform:none;z-index:1}.hero-slide .hero-copy,.hero-slide .hero-visual{min-width:0}.hero-slider-controls{position:absolute;z-index:4;left:9%;bottom:28px;display:flex;align-items:center;gap:18px}.hero-arrow{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:transparent;color:#fff;font-size:16px;cursor:pointer;transition:background .2s,color .2s}.hero-arrow:hover,.hero-arrow:focus-visible{background:#fff;color:var(--ink);outline:none}.hero-dots{display:flex;gap:8px}.hero-dot{width:26px;height:3px;padding:0;border:0;background:rgba(255,255,255,.4);cursor:pointer;transition:background .2s,width .2s}.hero-dot.is-active{width:42px;background:var(--orange)}.hero-visual-australia .photo-main{background-image:linear-gradient(0deg,rgba(14,54,56,.12),transparent),url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&w=800&q=85')}.hero-visual-uk .photo-main{background-image:linear-gradient(0deg,rgba(14,54,56,.12),transparent),url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=85')}
+@media(max-width:760px){.hero-slider{min-height:765px;padding:0}.hero-slide{display:block;padding:60px 25px 20px}.hero-slide .hero-visual{height:300px;min-height:0;margin-top:15px}.hero-slider-controls{left:25px;bottom:23px}.hero-dot{width:20px}.hero-dot.is-active{width:32px}}
+@media(prefers-reduced-motion:reduce){.hero-slide{transition:none}}
+@media(max-width:760px){html,body{overflow-x:hidden}.hero-slide .eyebrow{font-size:9px;letter-spacing:.13em}.hero-slide h1{font-size:clamp(52px,16vw,68px)}.hero-slide .hero-lede{max-width:100%;font-size:14px}.hero-slide .hero-buttons{align-items:flex-start}.hero-slide .hero-proof{margin-top:30px}.hero-slide .hero-visual{height:275px}.hero-slider-controls{bottom:18px}}
+@media(max-width:390px){.hero-slide{padding-left:20px;padding-right:20px}.hero-slide .hero-lede{font-size:13px}.hero-slide .hero-visual{height:255px;margin-top:8px}.hero-slider-controls{left:20px}.hero-arrow{width:31px;height:31px}.hero-slider-controls{gap:12px}}
