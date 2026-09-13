@@ -1,0 +1,33 @@
+{
+  "name": "go2abroad-frontend",
+  "private": true,
+  "overrides": {
+    "next": {
+      "postcss": "^8.5.28",
+      "sharp": "^0.35.4"
+    }
+  },
+  "scripts": {
+    "predev": "npm --prefix ../../packages/page-builder run build",
+    "prebuild": "npm --prefix ../../packages/page-builder run build",
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.1",
+    "@go2abroad/page-builder": "file:../../packages/page-builder",
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.5.6",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.0.0"
+  }
+}

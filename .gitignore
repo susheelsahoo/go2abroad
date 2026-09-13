@@ -3,6 +3,13 @@ node_modules/
 
 # Next.js build output
 .next/
+.next-dev/
+.next-test/
+dist/
+coverage/
+test-results/
+playwright-report/
+uploads/
 out/
 
 # Local environment files

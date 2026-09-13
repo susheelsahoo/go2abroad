@@ -1,0 +1,36 @@
+# Go2Abroad API
+
+NestJS backend API for the frontend, admin, and student applications.
+
+Implementation: NestJS + Prisma + PostgreSQL, with modules for authentication, users,
+students, applications, universities, courses, destinations, and leads.
+
+## Setup
+
+Create `apps/api/.env` from `.env.example`, then set `DATABASE_URL` to your
+PostgreSQL connection string.
+
+```bash
+npm --prefix apps/api install
+npm run db:generate
+npm run db:migrate -- --name init
+npm run dev:api
+```
+
+Health check: `GET http://localhost:4000/health`
+
+## Authentication endpoints
+
+- `POST /auth/admin/login`
+- `POST /auth/student/register`
+- `POST /auth/student/login`
+- `POST /auth/logout`
+- `POST /auth/password/forgot`
+- `POST /auth/password/reset`
+
+## Website settings endpoints
+
+- `GET /settings/website`
+- `POST /settings/website`
+- `PATCH /settings/website`
+- `DELETE /settings/website`

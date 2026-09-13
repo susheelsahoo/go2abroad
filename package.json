@@ -1,7 +1,40 @@
 {
   "name": "go2abroad-homepage",
   "private": true,
-  "scripts": { "dev": "next dev", "build": "next build", "start": "next start", "lint": "next lint" },
-  "dependencies": { "next": "^15.0.0", "react": "^19.0.0", "react-dom": "^19.0.0" },
-  "devDependencies": { "@types/node": "^22.0.0", "@types/react": "^19.0.0", "@types/react-dom": "^19.0.0", "typescript": "^5.0.0" }
+  "overrides": { "next": { "postcss": "^8.5.28", "sharp": "^0.35.4" } },
+  "scripts": {
+    "build:cms": "npm --prefix packages/page-builder run build",
+    "predev:all": "npm run build:cms",
+    "typecheck": "npm run build:cms && tsc --noEmit -p apps/api/tsconfig.json && tsc --noEmit -p apps/admin/tsconfig.json && tsc --noEmit -p apps/frontend/tsconfig.json && tsc --noEmit -p apps/student/tsconfig.json",
+    "lint": "eslint apps/api/src apps/admin/app apps/admin/components apps/admin/lib apps/frontend/app apps/frontend/lib packages/page-builder/src tests playwright.config.ts",
+    "test:cms": "npm run build:cms && npm run build:api && playwright test",
+    "dev": "npm run dev:frontend",
+    "dev:frontend": "npm --prefix apps/frontend run dev",
+    "dev:admin": "npm --prefix apps/admin run dev",
+    "dev:student": "npm --prefix apps/student run dev",
+    "dev:api": "npm --prefix apps/api run dev",
+    "dev:all": "sh scripts/dev-all.sh",
+    "build": "npm run build:cms && npm run build:frontend && npm run build:admin && npm run build:student && npm run build:api",
+    "build:frontend": "npm --prefix apps/frontend run build",
+    "build:admin": "npm --prefix apps/admin run build",
+    "build:student": "npm --prefix apps/student run build",
+    "build:api": "npm --prefix apps/api run build"
+  },
+  "dependencies": {
+    "next": "^15.5.25",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^10.10.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.13",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.70.0"
+  }
 }
