@@ -7,11 +7,13 @@ import { SettingsModule } from "./settings/settings.module";
 import { PagesModule } from "./pages/pages.module";
 import { PrismaModule } from "./prisma.module";
 import { MediaModule } from "./media/media.module";
+import { LeadsModule } from "./leads/leads.module";
+import { CatalogModule } from "./catalog/catalog.module";
 import { APP_GUARD } from "@nestjs/core";
 import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), PrismaModule, ThrottlerModule.forRoot([{ ttl: 60000, limit: 240 }]), AuthModule, SettingsModule, PagesModule, MediaModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), PrismaModule, ThrottlerModule.forRoot([{ ttl: 60000, limit: 240 }]), AuthModule, SettingsModule, PagesModule, MediaModule, LeadsModule, CatalogModule],
   controllers: [AppController, HealthController],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })

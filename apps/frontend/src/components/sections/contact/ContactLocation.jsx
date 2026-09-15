@@ -1,4 +1,8 @@
+import { useWebsiteSettings } from "../../../context/WebsiteSettingsContext";
+
 export default function ContactLocation() {
+  const { settings } = useWebsiteSettings();
+  const directionsUrl = settings.googleMapsUrl || "#";
   return (
     <section className="sis-contact-location section pt-0">
       <div className="container">
@@ -43,9 +47,7 @@ export default function ContactLocation() {
                   </b>
                 </span>
                 <p id="officeAddress">
-                  B-395, 2nd Floor, Nehru Ground,
-                            Neelam Chowk, Faridabad,
-                            Haryana - 121001
+                  {settings.address || "Address unavailable"}
                 </p>
               </div>
             </div>
@@ -60,7 +62,7 @@ export default function ContactLocation() {
                   </b>
                 </span>
                 <p id="officePhone">
-                  +91-7068821760
+                  {settings.contactPhone || "Phone unavailable"}
                 </p>
               </div>
             </div>
@@ -75,12 +77,12 @@ export default function ContactLocation() {
                   </b>
                 </span>
                 <p id="officeEmail">
-                  info@go2abroad.co
+                  {settings.contactEmail || "Email unavailable"}
                 </p>
               </div>
             </div>
             <div className="sisf-m-btn" style={{maxWidth: 'max-content'}}>
-              <a href="https://www.google.com/maps/search/?api=1&query=B-395%2C+2nd+Floor%2C+Nehru+Ground%2C+Neelam+Chowk%2C+Faridabad%2C+Haryana+121001" target="_blank" rel="noopener noreferrer" className="sis-btn-default" id="directionBtn">
+            <a href={directionsUrl} target="_blank" rel="noopener noreferrer" className="sis-btn-default" id="directionBtn">
                 <span>
                   Get Directions
                 </span>
@@ -89,7 +91,7 @@ export default function ContactLocation() {
             </div>
           </div>
           <div className="sis-location-map">
-            <iframe id="officeMap" src="https://www.google.com/maps?q=B-395%2C%202nd%20Floor%2C%20Nehru%20Ground%2C%20Neelam%20Chowk%2C%20Faridabad%2C%20Haryana%20121001&output=embed" width="600" height="100%" style={{border: '0'}} allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe id="officeMap" src={settings.googleMapsUrl ? `${settings.googleMapsUrl}${settings.googleMapsUrl.includes("output=embed") ? "" : `${settings.googleMapsUrl.includes("?") ? "&" : "?"}output=embed`}` : "about:blank"} width="600" height="100%" style={{border: '0'}} allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin"></iframe>
           </div>
         </div>
       </div>

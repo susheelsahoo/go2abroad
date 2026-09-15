@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { submitContactForm } from "../../../utils/submitContactForm";
+import { useWebsiteSettings } from "../../../context/WebsiteSettingsContext";
 const img = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 export default function ContactUs() {
+  const { settings } = useWebsiteSettings();
   const [submitting, setSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState("");
   const [destination, setDestination] = useState("");
@@ -9,9 +11,10 @@ export default function ContactUs() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
 
-    if (!event.currentTarget.checkValidity()) {
-      event.currentTarget.reportValidity();
+    if (!form.checkValidity()) {
+      form.reportValidity();
       return;
     }
 
@@ -19,13 +22,13 @@ export default function ContactUs() {
     setFormStatus("");
 
     try {
-      await submitContactForm(event.currentTarget);
-      event.currentTarget.reset();
+      await submitContactForm(form);
+      form.reset();
       setDestination("");
       setInterest("");
       setFormStatus("Thank you! Your enquiry has been sent successfully.");
     } catch (error) {
-      setFormStatus("We could not send your enquiry. Please try again or email info@go2abroad.co.");
+      setFormStatus(`We could not send your enquiry. Please try again or email ${settings.contactEmail || "our team"}.`);
     } finally {
       setSubmitting(false);
     }
@@ -57,13 +60,13 @@ export default function ContactUs() {
                 <div className="sisf-sis-contact-information">
                   <div className="sisf-contact-box mb-3 d-flex align-items-center gap-3">
                     <div className="sisf-icon">
-                      <a href="tel:+917068821760">
+                      <a href={settings.contactPhone ? `tel:${settings.contactPhone.replace(/[^+\d]/g, "")}` : "#"}>
                         <i className="fa-solid fa-phone-volume"></i>
                       </a>
                     </div>
                     <div className="sisf-sis-e-content">
-                      <a href="tel:+917068821760" className="sis-title text-white d-block">
-                        +91-7068821760, +91-9958155484
+                      <a href={settings.contactPhone ? `tel:${settings.contactPhone.replace(/[^+\d]/g, "")}` : "#"} className="sis-title text-white d-block">
+                        {settings.contactPhone || "Contact us"}
                       </a>
                       <span className="sis-title text-white d-block">
                         Phone
@@ -72,13 +75,13 @@ export default function ContactUs() {
                   </div>
                   <div className="sisf-contact-box mb-3 d-flex align-items-center gap-3">
                     <div className="sisf-icon">
-                      <a href="mailto:info@go2abroad.co">
+                      <a href={settings.contactEmail ? `mailto:${settings.contactEmail}` : "#"}>
                         <i className="fa-regular fa-envelope"></i>
                       </a>
                     </div>
                     <div className="sisf-sis-e-content">
-                      <a href="mailto:info@go2abroad.co" className="sis-title text-white d-block">
-                        info@go2abroad.co
+                      <a href={settings.contactEmail ? `mailto:${settings.contactEmail}` : "#"} className="sis-title text-white d-block">
+                        {settings.contactEmail || "Email our team"}
                       </a>
                       <span className="sis-title text-white d-block">
                         Send a mail
@@ -87,13 +90,13 @@ export default function ContactUs() {
                   </div>
                   <div className="sisf-contact-box mb-0 d-flex align-items-center gap-3">
                     <div className="sisf-icon">
-                      <a href="https://wa.me/919958155484" target="_blank" rel="noopener">
+                      <a href={settings.whatsappNumber ? `https://wa.me/${settings.whatsappNumber.replace(/\D/g, "")}` : "#"} target="_blank" rel="noopener noreferrer">
                         <i className="fa-brands fa-whatsapp"></i>
                       </a>
                     </div>
                     <div className="sisf-sis-e-content">
-                      <a href="https://wa.me/919958155484" target="_blank" rel="noopener" className="sis-title text-white d-block">
-                        WhatsApp
+                      <a href={settings.whatsappNumber ? `https://wa.me/${settings.whatsappNumber.replace(/\D/g, "")}` : "#"} target="_blank" rel="noopener noreferrer" className="sis-title text-white d-block">
+                        {settings.whatsappNumber || "WhatsApp"}
                       </a>
                       <span className="sis-title text-white d-block">
                         Chat with our team

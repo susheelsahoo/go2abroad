@@ -34,9 +34,11 @@ Last updated: 2026-09-15
 - Added Swagger UI at `http://localhost:4000/docs`.
 - Added website settings CRUD API and seeded default settings.
 - Added website image upload API for logos and favicon.
+- Added website contact lead capture API and PostgreSQL `leads` table migration.
 - Added admin login and forgot-password UI.
 - Added reusable admin sidebar, header, and shell components.
 - Added admin dashboard and website settings form.
+- Added working admin Leads page with status filtering and updates.
 - Admin entry point is available at `http://localhost:3001/`.
 - Website settings are available at `http://localhost:3001/settings` and are
   consumed by the public React website at `http://localhost:5173`.
@@ -107,16 +109,16 @@ Last updated: 2026-09-15
 - [x] Admin page-content editor at `/pages` with predefined fields for the
   developer-owned page sections.
 
-- [ ] Users and roles.
-- [ ] Student profiles.
+- [x] Student account CRUD for users with the `STUDENT` role.
+- [ ] Extended student profile CRUD.
 - [ ] Student applications.
 - [ ] Application status and workflow history.
 - [ ] Documents and document verification.
 - [ ] Counsellors and assignments.
-- [ ] Leads and enquiries.
+- [x] Leads and enquiries.
 - [ ] Countries and destinations.
-- [ ] Universities.
-- [ ] Courses and intakes.
+- [x] Universities.
+- [x] Courses and intakes.
 - [ ] Scholarships.
 - [ ] Blogs and content management.
 - [ ] Notifications and communication history.
@@ -128,14 +130,16 @@ Last updated: 2026-09-15
 - [x] Create protected admin layout and navigation.
 - [x] Build dashboard UI with key statistics.
 - [ ] Manage users, roles, and permissions.
-- [ ] Manage student profiles.
-- [ ] Manage leads and enquiries.
+- [x] Manage student accounts.
+- [x] Manage leads and enquiries.
 - [ ] Assign leads to counsellors.
 - [ ] Manage applications and status transitions.
 - [ ] Review and approve student documents.
 - [ ] Manage destinations and countries.
-- [ ] Manage universities.
-- [ ] Manage courses and intakes.
+- [x] Manage universities.
+- [x] Manage courses and intakes.
+- [x] Manage FAQs.
+- [x] Manage reviews and testimonials.
 - [ ] Manage scholarships.
 - [ ] Manage blogs and website content.
 - [ ] Add reports, filters, search, pagination, and exports.

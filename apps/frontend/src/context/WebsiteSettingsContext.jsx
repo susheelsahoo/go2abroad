@@ -28,7 +28,8 @@ const WebsiteSettingsContext = createContext({
 function assetUrl(value) {
   if (!value) return "";
   if (/^(https?:|data:|blob:)/i.test(value)) return value;
-  return value.startsWith("/") ? `${API_URL}${value}` : value;
+  if (value.startsWith("/uploads/")) return `${API_URL}${value}`;
+  return `${import.meta.env.BASE_URL}${value.replace(/^\/+/, "")}`;
 }
 
 export function WebsiteSettingsProvider({ children }) {
