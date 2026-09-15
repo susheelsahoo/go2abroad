@@ -5,8 +5,8 @@
   "scripts": {
     "build:cms": "npm --prefix packages/page-builder run build",
     "predev:all": "npm run build:cms",
-    "typecheck": "npm run build:cms && tsc --noEmit -p apps/api/tsconfig.json && tsc --noEmit -p apps/admin/tsconfig.json && tsc --noEmit -p apps/frontend/tsconfig.json && tsc --noEmit -p apps/student/tsconfig.json",
-    "lint": "eslint apps/api/src apps/admin/app apps/admin/components apps/admin/lib apps/frontend/app apps/frontend/lib packages/page-builder/src tests playwright.config.ts",
+    "typecheck": "npm run build:cms && tsc --noEmit -p apps/api/tsconfig.json && tsc --noEmit -p apps/admin/tsconfig.json && tsc --noEmit -p apps/student/tsconfig.json",
+    "lint": "npm --prefix apps/frontend run lint && eslint apps/api/src apps/admin/app apps/admin/components apps/admin/lib packages/page-builder/src tests playwright.config.ts",
     "test:cms": "npm run build:cms && npm run build:api && playwright test",
     "dev": "npm run dev:frontend",
     "dev:frontend": "npm --prefix apps/frontend run dev",

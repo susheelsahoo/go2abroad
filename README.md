@@ -7,7 +7,7 @@ dashboard, student portal, and NestJS backend API.
 
 | Application | Directory | Development URL | Purpose |
 | --- | --- | --- | --- |
-| Public website | `apps/frontend` | http://localhost:3000 | Public-facing website |
+| Public website | `apps/frontend` | http://localhost:5173 | Public-facing React/Vite website |
 | Admin dashboard | `apps/admin` | http://localhost:3001 | CMS and staff administration |
 | Student portal | `apps/student` | http://localhost:3002 | Student-facing application |
 | Backend API | `apps/api` | http://localhost:4000 | API, authentication, and content |
@@ -60,7 +60,6 @@ Create the environment files from their examples:
 
 ```bash
 cp apps/api/.env.example apps/api/.env
-cp apps/frontend/.env.example apps/frontend/.env.local
 cp apps/admin/.env.example apps/admin/.env.local
 ```
 
@@ -91,7 +90,7 @@ npm run dev:all
 
 This starts all four applications in parallel:
 
-- Website: http://localhost:3000
+- Website: http://localhost:5173
 - Admin: http://localhost:3001
 - Student portal: http://localhost:3002
 - API: http://localhost:4000
@@ -110,7 +109,7 @@ need from the repository root.
 npm run dev:frontend
 ```
 
-Open http://localhost:3000.
+Open http://localhost:5173.
 
 ### Admin dashboard
 
@@ -173,8 +172,8 @@ npm --prefix apps/student run start
 npm --prefix apps/api run start
 ```
 
-The production ports are the same as the development ports: 3000, 3001, 3002,
-and 4000.
+The frontend preview server uses Vite's default port 4173. The other
+application ports are 3001, 3002, and 4000.
 
 ## Useful commands
 
@@ -207,8 +206,7 @@ packages/
   page-builder/   Shared page-builder package
 ```
 
-## Frontend icons
+## Frontend
 
-The frontend uses the local `@fortawesome/fontawesome-free` package for menu,
-navigation, social, and action icons. Keep dependencies installed when setting
-up the project because the package also provides the required icon font files.
+The public website is a React/Vite single-page application. Its assets are in
+`apps/frontend/public`, and its routes are defined in `apps/frontend/src/App.jsx`.
