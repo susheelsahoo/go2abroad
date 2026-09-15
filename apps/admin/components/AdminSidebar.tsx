@@ -1,13 +1,15 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useWebsiteSettings } from "./WebsiteSettingsProvider";
 
 export function AdminSidebar({ onLogout }: { onLogout: () => void }) {
   const pathname = usePathname();
+  const { settings, assetUrl } = useWebsiteSettings();
   return (
     <aside className="sidebar">
       <div className="logo">
-        G<span>2</span>A
+        {settings.logoLightUrl || settings.logoUrl ? <img className="admin-logo-image" src={assetUrl(settings.logoLightUrl || settings.logoUrl)} alt={`${settings.siteName || "Go2Abroad"} logo`} /> : <>G<span>2</span>A</>}
       </div>
       <small>WORKSPACE</small>
       <nav>

@@ -1,8 +1,10 @@
 "use client";
 import { FormEvent, useEffect, useState } from "react";
 import { AdminShell } from "../components/AdminShell";
+import { useWebsiteSettings } from "../components/WebsiteSettingsProvider";
 
 export default function AdminPage() {
+  const { settings, assetUrl } = useWebsiteSettings();
   const [loggedIn, setLoggedIn] = useState(false);
   const [error, setError] = useState("");
   useEffect(
@@ -30,10 +32,8 @@ export default function AdminPage() {
     return (
       <main className="auth-shell">
         <section className="auth-card">
-          <div className="brand-mark">
-            G<span>2</span>A
-          </div>
-          <p className="eyebrow">GO2ABROAD ADMIN</p>
+          {settings.logoUrl ? <img className="auth-logo" src={assetUrl(settings.logoUrl)} alt={`${settings.siteName || "Go2Abroad"} logo`} /> : <div className="brand-mark">G<span>2</span>A</div>}
+          <p className="eyebrow">{settings.siteName || "GO2ABROAD"} ADMIN</p>
           <h1>Admin login</h1>
           <form onSubmit={login}>
             <label>

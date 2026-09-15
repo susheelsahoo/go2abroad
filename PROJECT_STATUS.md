@@ -1,6 +1,6 @@
 # Go2Abroad Project Status
 
-Last updated: 2026-09-12
+Last updated: 2026-09-15
 
 ## 1. Current Architecture
 
@@ -17,10 +17,10 @@ Last updated: 2026-09-12
 
 ## 2. Completed
 
-- Created separate frontend, admin, and student Next.js applications.
-- Moved the existing public homepage into `apps/frontend`.
+- Created the React/Vite public frontend, Next.js admin, and student applications.
+- Moved the public React website into `apps/frontend`.
 - Added separate development ports:
-  - Frontend: `3000`
+  - Frontend: `5173` (Vite)
   - Admin: `3001`
   - Student: `3002`
 - Added `npm run dev:all` to run all web applications together.
@@ -37,39 +37,44 @@ Last updated: 2026-09-12
 - Added admin login and forgot-password UI.
 - Added reusable admin sidebar, header, and shell components.
 - Added admin dashboard and website settings form.
+- Admin entry point is available at `http://localhost:3001/`.
+- Website settings are available at `http://localhost:3001/settings` and are
+  consumed by the public React website at `http://localhost:5173`.
+- Connected the database-managed logo to the public header/footer, admin
+  sidebar, and admin login screen.
 - Added the configuration-driven page content editor: Prisma models, page/section
   APIs, component registry and schemas, fixed-structure admin content forms,
   media picker, SEO, draft/publish workflow, secure previews, version history,
   and public catch-all rendering. Layout and styling remain developer-owned.
 - Added Tailwind CSS styling to the admin application.
-- Confirmed frontend, admin, and API builds successfully.
+- Confirmed React/Vite frontend, admin, and API builds successfully.
 
 ## 3. Frontend Modules — `apps/frontend`
 
 ### Public website
 
-- [ ] Finalize homepage design and responsive behavior.
-- [ ] Add About Us page.
-- [ ] Add Services page.
-- [ ] Add Study Destinations listing and detail pages.
+- [x] Add homepage design and responsive behavior.
+- [x] Add About Us page.
+- [x] Add Services page.
+- [x] Add Study Destinations listing and detail pages.
 - [ ] Add Universities listing and detail pages.
-- [ ] Add Courses listing and detail pages.
+- [x] Add Courses listing and detail pages.
 - [ ] Add Scholarships section.
-- [ ] Add Success Stories section.
+- [x] Add Success Stories section.
 - [ ] Add Blog listing and article pages.
-- [ ] Add Contact and consultation enquiry forms.
-- [ ] Add navigation, footer, search, and mobile menu.
-- [ ] Connect all content to the API.
-- [ ] Add SEO metadata, sitemap, robots.txt, and social sharing metadata.
+- [x] Add Contact and consultation enquiry forms.
+- [x] Add navigation, footer, and mobile menu.
+- [ ] Connect all page content to the API.
+- [x] Add global SEO metadata and favicon settings integration.
 - [ ] Add accessibility review and performance optimization.
 
 ### Frontend integration
 
-- [ ] Create API client.
-- [ ] Add loading, empty, and error states.
+- [x] Create website settings API integration.
+- [x] Add API fallback content when settings are unavailable.
 - [ ] Add form validation.
 - [ ] Add analytics and consent handling.
-- [ ] Replace temporary/static data with API data.
+- [ ] Replace page-specific static data with API data.
 
 ## 4. Backend Modules — `apps/api`
 
@@ -120,7 +125,7 @@ Last updated: 2026-09-12
 ## 5. Admin Modules — `apps/admin`
 
 - [x] Create admin authentication screens.
-- [ ] Create protected admin layout and navigation.
+- [x] Create protected admin layout and navigation.
 - [x] Build dashboard UI with key statistics.
 - [ ] Manage users, roles, and permissions.
 - [ ] Manage student profiles.
@@ -135,11 +140,14 @@ Last updated: 2026-09-12
 - [ ] Manage blogs and website content.
 - [ ] Add reports, filters, search, pagination, and exports.
 - [ ] Add audit-log views.
-- [x] Connect authentication and website settings screens to the API.
+- [x] Connect admin authentication and website settings screens to the API.
+- [x] Use database-managed branding in the admin login and dashboard shell.
 
 ## 6. Student Modules — `apps/student`
 
-- [ ] Create registration and login screens.
+- [x] Create student login screen.
+- [ ] Create student registration screen.
+- [x] Use database-managed branding on the student login screen.
 - [ ] Create protected student layout and navigation.
 - [ ] Build student dashboard.
 - [ ] Build and edit student profile.
@@ -236,7 +244,8 @@ Implement in this order:
 - [ ] **Leads:** Enquiry capture, lead list, status workflow, counsellor assignment, notes, and follow-ups.
 - [ ] **Content:** Destinations, universities, courses, FAQs, blogs, testimonials, and media management.
 - [ ] **Student portal:** Registration UI, profile, saved courses, applications, documents, and status timeline.
-- [ ] **Frontend integration:** Replace static homepage data with settings and content API data.
+- [x] **Frontend integration:** Connect global website settings to the React frontend.
+- [ ] **Frontend integration:** Replace page-specific static content with content API data.
 - [ ] **Email:** Connect password reset, verification, enquiry notifications, and application updates to an email provider.
 - [ ] **Quality:** Add tests, API error standards, rate limiting, audit logs, and deployment configuration.
 

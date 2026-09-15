@@ -2,7 +2,7 @@
 
 ## ROLE
 
-You are a Senior Next.js UI/UX Engineer working on the Go2Abroad Study Abroad Consultancy Platform.
+You are a Senior React UI/UX Engineer working on the Go2Abroad Study Abroad Consultancy Platform.
 
 You must follow the existing Go2Abroad Master System Prompt and project architecture.
 
@@ -16,10 +16,10 @@ Do not implement the Admin Panel, CRM, authentication, university CMS, course CM
 
 The final architecture is:
 
-- Public Website: Next.js 15+ + React 19 + TypeScript
+- Public Website: React 19 + Vite + JavaScript/JSX
 - Admin: Next.js 15+ + React 19 + TypeScript
 - Backend: NestJS + Node.js + TypeScript
-- Database: MySQL 8.4 LTS
+- Database: PostgreSQL 14+ with Prisma
 - ORM: Prisma
 - Cache: Redis
 - Queue: BullMQ
@@ -30,7 +30,7 @@ The final architecture is:
 
 For this task, focus only on:
 
-**Next.js public website homepage.**
+**React/Vite public website homepage.**
 
 ---
 
@@ -1003,7 +1003,7 @@ Data Function / Repository
 ↓
 NestJS API
 ↓
-MySQL
+PostgreSQL
 
 This allows backend integration without rewriting the UI.
 
@@ -1011,7 +1011,7 @@ This allows backend integration without rewriting the UI.
 
 # 32. SEO
 
-Implement homepage SEO using Next.js Metadata API.
+Implement homepage SEO using document metadata and the website settings API.
 
 Create:
 
@@ -1176,7 +1176,7 @@ Do NOT implement in this task:
 
 - NestJS backend
 - Prisma schema
-- MySQL migrations
+- PostgreSQL migrations
 - Admin dashboard
 - Admin authentication
 - RBAC
@@ -1197,7 +1197,7 @@ Only create the public homepage and the frontend interfaces required for future 
 Before writing code:
 
 1. Inspect the existing project.
-2. Identify the existing Next.js structure.
+2. Identify the existing React/Vite structure.
 3. Check whether Tailwind/shadcn is already configured.
 4. Check existing components.
 5. Reuse existing design-system components where appropriate.

@@ -2,9 +2,9 @@ Yes. This uploaded `project-details.md` is much more specific and should now be 
 
 The main architectural change is:
 
-> **Next.js + Next.js Admin + NestJS API + MySQL 8.4 + Prisma + Redis**
+> **React/Vite Website + Next.js Admin + NestJS API + PostgreSQL + Prisma + Redis**
 
-Your uploaded requirements currently specify PostgreSQL and Next.js API Routes, but based on our decisions in this conversation, I would update those two points to **MySQL 8.4** and **NestJS**. Everything else below follows your supplied requirements.
+The current implementation uses a React/Vite public website in `apps/frontend`, a Next.js admin application, and a NestJS API backed by PostgreSQL and Prisma.
 
 # Go2Abroad — Updated Project Details
 
@@ -38,7 +38,7 @@ The platform will be inspired by the information architecture and user experienc
 ### Frontend
 
 ```text
-Next.js 15+
+React 19 + Vite
 React 19+
 TypeScript
 Tailwind CSS
@@ -66,15 +66,9 @@ Zod
 Recharts
 ```
 
-### Backend — updated
+### Backend
 
-Instead of the original:
-
-```text
-Next.js API Routes
-```
-
-I recommend:
+The backend is a NestJS REST API:
 
 ```text
 NestJS
@@ -84,12 +78,10 @@ REST API
 Prisma ORM
 ```
 
-### Database — updated
-
-Instead of PostgreSQL:
+### Database
 
 ```text
-MySQL 8.4 LTS
+PostgreSQL 14+
 ```
 
 ### Supporting infrastructure
@@ -124,7 +116,7 @@ Docker
               │                         │
               ▼                         ▼
     ┌──────────────────┐      ┌──────────────────┐
-    │   Next.js Web    │      │  Next.js Admin   │
+    │  React/Vite Web  │      │  Next.js Admin   │
     │                  │      │                  │
     │ Public Website   │      │ Admin Dashboard  │
     │ SEO / SSR / ISR  │      │ CMS / CRM        │
@@ -157,7 +149,7 @@ Docker
                           │
                           ▼
                   ┌──────────────┐
-                  │   MySQL 8.4  │
+                  │ PostgreSQL 14+│
                   └──────┬───────┘
                          │
                ┌─────────┴─────────┐
@@ -174,15 +166,15 @@ Docker
 
 # 4. Monorepo Structure
 
-I recommend changing your current single Next.js folder structure to this:
+The current repository uses this application structure:
 
 ```text
 go2abroad/
 │
 ├── apps/
 │   │
-│   ├── web/
-│   │   └── Next.js Public Website
+│   ├── frontend/
+│   │   └── React/Vite Public Website
 │   │
 │   ├── admin/
 │   │   └── Next.js Admin Panel
@@ -210,7 +202,7 @@ go2abroad/
 └── README.md
 ```
 
-This is better for your requirement because the Admin and public site are both Next.js, while the NestJS API is completely separated.
+The current implementation uses React/Vite for the public website and Next.js for the admin application, while the NestJS API is completely separated.
 
 ---
 
@@ -610,9 +602,9 @@ SEO Metadata
    ↓
 NestJS API
    ↓
-MySQL
+PostgreSQL
    ↓
-Next.js
+   React/Vite Web
    ↓
 Metadata / JSON-LD / Sitemap
 ```
@@ -818,7 +810,7 @@ activity_logs
 
 For the final architecture, use:
 
-**MySQL 8.4 LTS + Prisma.**
+**PostgreSQL 14+ + Prisma.**
 
 I would extend the schema slightly for the actual relationships:
 
@@ -982,7 +974,7 @@ Student submits lead
        ↓
 NestJS
        ↓
-MySQL ← Save lead immediately
+PostgreSQL ← Save lead immediately
        ↓
 Redis/BullMQ
        ├── Email
@@ -1009,12 +1001,12 @@ Cloudinary / S3 / Azure Blob
   ↓
 CDN
   ↓
-Next.js Image
+Frontend image element
 ```
 
-Don't store actual images inside MySQL.
+Don't store actual images inside PostgreSQL.
 
-MySQL stores metadata:
+PostgreSQL stores metadata:
 
 ```text
 media
@@ -1041,10 +1033,10 @@ I would keep these phases but break them into smaller implementation sprints.
 
 ```text
 Monorepo
-Next.js Web
+React/Vite Web
 Next.js Admin
 NestJS API
-MySQL
+PostgreSQL
 Prisma
 Redis
 Authentication
@@ -1119,7 +1111,7 @@ The NestJS API gives us a clean foundation for this:
         ┌───────────────┼────────────────┐
         │               │                │
         ▼               ▼                ▼
-   Next.js Web     Next.js Admin    Student Portal
+   React/Vite Web  Next.js Admin    Student Portal
                                         │
                                         ▼
                                    Mobile App
@@ -1153,9 +1145,8 @@ After reviewing your actual project requirements and our architecture discussion
 ├─────────────────────────────────────────────┤
 │                                             │
 │ Public Website                              │
-│ Next.js 15+                                 │
-│ React 19                                    │
-│ TypeScript                                  │
+│ React 19 + Vite                             │
+│ JavaScript / JSX                            │
 │                                             │
 │ Admin                                       │
 │ Next.js 15+                                 │
@@ -1168,7 +1159,7 @@ After reviewing your actual project requirements and our architecture discussion
 │ TypeScript                                  │
 │                                             │
 │ Database                                    │
-│ MySQL 8.4 LTS                               │
+│ PostgreSQL 14+                              │
 │                                             │
 │ ORM                                         │
 │ Prisma                                      │
@@ -1202,7 +1193,7 @@ Your current file says:
 
 ```text
 Backend
-Next.js API Routes / Route Handlers
+NestJS REST API
 Prisma
 PostgreSQL
 NextAuth / JWT
@@ -1217,7 +1208,7 @@ Backend
 - TypeScript
 - REST API
 - Prisma ORM
-- MySQL 8.4 LTS
+- PostgreSQL 14+
 - Redis
 - BullMQ
 - JWT / secure HTTP-only cookie authentication
@@ -1233,7 +1224,7 @@ That is the main architectural update.
 This gives you a clean separation:
 
 ```text
-Next.js Web
+React/Vite Web
       │
       ├──────────────┐
       │              │
@@ -1244,7 +1235,7 @@ Next.js Web
    Prisma
       │
       ▼
-   MySQL
+   PostgreSQL
 ```
 
 And it keeps the system simple enough to develop now while being ready for the future student portal, counsellor portal, AI, mobile app, WhatsApp automation, and multi-country expansion.
