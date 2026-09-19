@@ -2,6 +2,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { AdminShell } from "../components/AdminShell";
 import { useWebsiteSettings } from "../components/WebsiteSettingsProvider";
+import { API_BASE } from "../lib/cms-api";
 
 export default function AdminPage() {
   const { settings, assetUrl } = useWebsiteSettings();
@@ -13,20 +14,25 @@ export default function AdminPage() {
   );
   async function login(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError("");
     const f = new FormData(e.currentTarget);
-    const r = await fetch("http://localhost:4000/auth/admin/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: f.get("email"),
-        password: f.get("password"),
-      }),
-    });
-    const d = await r.json();
-    if (!r.ok) return setError(d.message ?? "Login failed");
-    localStorage.setItem("admin_access_token", d.accessToken);
-    localStorage.setItem("admin_refresh_token", d.refreshToken);
-    setLoggedIn(true);
+    try {
+      const r = await fetch(`${API_BASE}/auth/admin/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: f.get("email"),
+          password: f.get("password"),
+        }),
+      });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) return setError(d.message ?? "Login failed");
+      localStorage.setItem("admin_access_token", d.accessToken);
+      localStorage.setItem("admin_refresh_token", d.refreshToken);
+      setLoggedIn(true);
+    } catch {
+      setError(`Cannot reach the API at ${API_BASE}. Start the API server and try again.`);
+    }
   }
   if (!loggedIn)
     return (

@@ -1,11 +1,12 @@
 import { Body, Controller, Get, Put, Req, UseGuards } from "@nestjs/common";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
-import { CmsGuard, CmsRequest, PublishPermission } from "../auth/cms.guard";
+import { ADMIN_ROLES, CmsGuard, CmsRequest, CmsRoles, PublishPermission } from "../auth/cms.guard";
 import { SiteService } from "./site.service";
 
 @ApiTags("CMS site design")
 @ApiBearerAuth()
 @UseGuards(CmsGuard)
+@CmsRoles(...ADMIN_ROLES)
 @Controller("api/site")
 export class SiteController {
   constructor(private readonly service: SiteService) {}

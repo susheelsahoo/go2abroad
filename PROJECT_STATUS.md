@@ -1,6 +1,6 @@
 # Go2Abroad Project Status
 
-Last updated: 2026-09-15
+Last updated: 2026-09-19
 
 ## 1. Current Architecture
 
@@ -8,7 +8,7 @@ Last updated: 2026-09-15
 - `apps/frontend` — public website for visitors.
 - `apps/admin` — admin dashboard for staff.
 - `apps/student` — student portal.
-- `apps/api` — NestJS shared backend API with PostgreSQL and Prisma.
+- `apps/api` — NestJS shared backend API with MySQL and Prisma.
 - `packages/ui` — planned shared UI components.
 - `packages/types` — planned shared TypeScript types.
 - `packages/validation` — planned shared validation schemas.
@@ -26,7 +26,7 @@ Last updated: 2026-09-15
 - Added `npm run dev:all` to run all web applications together.
 - Added root build commands for all applications.
 - Added monorepo workspace configuration.
-- Added NestJS API foundation with PostgreSQL and Prisma migrations.
+- Added NestJS API foundation with MySQL and Prisma migrations.
 - Added standard `User`, `StudentProfile`, `AuthSession`, and `WebsiteSetting` models.
 - Added development admin and student seed accounts.
 - Added admin login, student registration/login, logout, and password-reset APIs.
@@ -34,11 +34,18 @@ Last updated: 2026-09-15
 - Added Swagger UI at `http://localhost:4000/docs`.
 - Added website settings CRUD API and seeded default settings.
 - Added website image upload API for logos and favicon.
-- Added website contact lead capture API and PostgreSQL `leads` table migration.
+- Added website contact lead capture API and MySQL `leads` table migration.
 - Added admin login and forgot-password UI.
 - Added reusable admin sidebar, header, and shell components.
+- Applied the shared admin shell consistently across all admin modules and fixed sidebar icon/text alignment.
 - Added admin dashboard and website settings form.
 - Added working admin Leads page with status filtering and updates.
+- Added role-based CMS authorization for Admin, Counsellor, and Student users.
+- Added admin Users module with account creation, editing, deactivation, role assignment, and password hashing.
+- Added counsellor access restrictions to Overview, Leads, and Students.
+- Added Blog API, Prisma model/migration, public blog endpoints, and admin blog management.
+- Added idempotent seed coverage for admin, counsellor, student, settings, catalogue, FAQs, reviews, leads, and blog content.
+- Existing migration history is preserved; new schema changes should use one migration per table.
 - Admin entry point is available at `http://localhost:3001/`.
 - Website settings are available at `http://localhost:3001/settings` and are
   consumed by the public React website at `http://localhost:5173`.
@@ -84,7 +91,8 @@ Last updated: 2026-09-15
 
 - [x] Initialize NestJS application.
 - [x] Configure environment variables.
-- [x] Configure PostgreSQL connection and migrations.
+- [x] Configure MySQL connection.
+- [x] Replace the historical PostgreSQL migration history with a MySQL baseline.
 - [x] Add Prisma ORM.
 - [ ] Add API versioning and global error handling.
 - [x] Add request validation and response serialization.
@@ -120,7 +128,7 @@ Last updated: 2026-09-15
 - [x] Universities.
 - [x] Courses and intakes.
 - [ ] Scholarships.
-- [ ] Blogs and content management.
+- [x] Blogs and content management API and admin module.
 - [ ] Notifications and communication history.
 - [ ] Audit logs.
 
@@ -129,7 +137,7 @@ Last updated: 2026-09-15
 - [x] Create admin authentication screens.
 - [x] Create protected admin layout and navigation.
 - [x] Build dashboard UI with key statistics.
-- [ ] Manage users, roles, and permissions.
+- [x] Manage users, roles, and permissions.
 - [x] Manage student accounts.
 - [x] Manage leads and enquiries.
 - [ ] Assign leads to counsellors.
@@ -141,7 +149,7 @@ Last updated: 2026-09-15
 - [x] Manage FAQs.
 - [x] Manage reviews and testimonials.
 - [ ] Manage scholarships.
-- [ ] Manage blogs and website content.
+- [x] Manage blogs and website content in the admin dashboard.
 - [ ] Add reports, filters, search, pagination, and exports.
 - [ ] Add audit-log views.
 - [x] Connect admin authentication and website settings screens to the API.
@@ -195,7 +203,7 @@ Last updated: 2026-09-15
 
 - [ ] Select and provision the production database.
 - [ ] Design the database schema.
-- [ ] Add migrations and seed data.
+- [x] Add MySQL migration and seed data.
 - [ ] Configure file storage for student documents.
 - [ ] Configure email provider.
 - [ ] Configure background jobs and notifications if required.
@@ -218,16 +226,13 @@ Last updated: 2026-09-15
 
 ## 10. Recommended Delivery Order
 
-1. Finalize the frontend information architecture and design system.
-2. Initialize `apps/api` and design the database schema.
-3. Implement authentication, users, roles, and permissions.
-4. Implement destinations, universities, courses, and content APIs.
-5. Connect the public frontend to the API.
-6. Build lead and enquiry management in admin.
-7. Build student profiles, applications, and documents.
-8. Add shared packages and remove duplicated code.
-9. Add testing, security, deployment, monitoring, and backups.
-10. Launch staging, perform acceptance testing, then deploy production.
+1. Connect the public frontend blog listing and article pages to the Blog API.
+2. Connect remaining public page content to the API.
+3. Build student profiles, applications, and documents.
+4. Add lead assignment and counsellor workflow features.
+5. Add shared packages and remove duplicated code.
+6. Add testing, security, deployment, monitoring, and backups.
+7. Launch staging, perform acceptance testing, then deploy production.
 
 ## 11. Local Commands
 
@@ -243,17 +248,18 @@ npm run build
 
 Implement in this order:
 
-- [ ] **Authorization:** JWT guards, protected routes, role-based permissions, and admin route protection.
-- [ ] **Users:** Admin user list, create/edit/deactivate users, role assignment, and profile management.
+- [x] **Authorization:** JWT guards, protected routes, role-based permissions, and admin route protection.
+- [x] **Users:** Admin user list, create/edit/deactivate users, role assignment, and profile management.
 - [ ] **Leads:** Enquiry capture, lead list, status workflow, counsellor assignment, notes, and follow-ups.
-- [ ] **Content:** Destinations, universities, courses, FAQs, blogs, testimonials, and media management.
+- [x] **Content:** Destinations, universities, courses, FAQs, blogs, testimonials, and media management in admin/API.
 - [ ] **Student portal:** Registration UI, profile, saved courses, applications, documents, and status timeline.
 - [x] **Frontend integration:** Connect global website settings to the React frontend.
 - [ ] **Frontend integration:** Replace page-specific static content with content API data.
 - [ ] **Email:** Connect password reset, verification, enquiry notifications, and application updates to an email provider.
 - [ ] **Quality:** Add tests, API error standards, rate limiting, audit logs, and deployment configuration.
 
-Current status: the monorepo, PostgreSQL database, Prisma schema, authentication
-foundation, website settings module, admin dashboard shell, and settings form
-are working. The next priority is protected authorization, user management,
-and the lead-management module.
+Current status: the monorepo, MySQL database, Prisma schema, authentication,
+role-based authorization, shared admin shell, Users module, Leads module, catalog
+modules, website settings, page builder, and Blog API/admin module are working.
+The next priority is connecting the public frontend Blog pages and continuing
+student workflows, lead assignment, testing, and production hardening.

@@ -28,3 +28,4 @@ CREATE TABLE "page_versions" (
 CREATE UNIQUE INDEX "page_versions_pageId_version_key" ON "page_versions"("pageId", "version");
 CREATE INDEX "page_versions_pageId_idx" ON "page_versions"("pageId");
 ALTER TABLE "page_versions" ADD CONSTRAINT "page_versions_pageId_fkey" FOREIGN KEY ("pageId") REFERENCES "pages"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+

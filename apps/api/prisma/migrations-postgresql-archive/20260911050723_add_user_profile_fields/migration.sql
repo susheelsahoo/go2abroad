@@ -27,3 +27,4 @@ CREATE UNIQUE INDEX "student_profiles_userId_key" ON "student_profiles"("userId"
 CREATE INDEX "student_profiles_country_idx" ON "student_profiles"("country");
 ALTER TABLE "student_profiles" ADD CONSTRAINT "student_profiles_userId_fkey"
   FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+

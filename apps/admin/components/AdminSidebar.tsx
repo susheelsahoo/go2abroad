@@ -1,11 +1,36 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useWebsiteSettings } from "./WebsiteSettingsProvider";
+import { cmsApi } from "../lib/cms-api";
 
 export function AdminSidebar({ onLogout }: { onLogout: () => void }) {
   const pathname = usePathname();
   const { settings, assetUrl } = useWebsiteSettings();
+  const [role, setRole] = useState<string>();
+  const navigation = [
+    ["⌂", "Overview", "/"],
+    ["◉", "Leads", "/leads"],
+    ["◎", "Students", "/students"],
+    ["◇", "Universities", "/universities"],
+    ["▤", "Courses", "/courses"],
+    ["☆", "Reviews", "/reviews"],
+    ["?", "FAQs", "/faqs"],
+    ["✎", "Blog", "/blog"],
+    ["♙", "Users", "/users"],
+    ["▧", "Page builder", "/pages"],
+    ["⚙", "Website settings", "/settings"],
+  ] as const;
+  useEffect(() => {
+    void cmsApi<{ role: string }>("/auth/cms-session")
+      .then((session) => setRole(session.role))
+      .catch(() => setRole(undefined));
+  }, []);
+  const isAdmin = ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "SEO_MANAGER", "EDITOR"].includes(role ?? "");
+  const visibleNavigation = isAdmin
+    ? navigation
+    : navigation.filter(([, , href]) => href === "/" || href === "/leads" || href === "/students");
   return (
     <aside className="sidebar">
       <div className="logo">
@@ -23,46 +48,20 @@ export function AdminSidebar({ onLogout }: { onLogout: () => void }) {
       </div>
       <small>WORKSPACE</small>
       <nav>
-        <Link className={pathname === "/" ? "active" : ""} href="/">
-          ⌂ Overview
-        </Link>
-        <Link
-          className={pathname.startsWith("/leads") ? "active" : ""}
-          href="/leads"
-        >
-          ◉ Leads
-        </Link>
-        <Link
-          className={pathname.startsWith("/students") ? "active" : ""}
-          href="/students"
-        >
-          ◎ Students
-        </Link>
-        <Link
-          className={pathname.startsWith("/universities") ? "active" : ""}
-          href="/universities"
-        >
-          ◇ Universities
-        </Link>
-        <Link
-          className={pathname.startsWith("/courses") ? "active" : ""}
-          href="/courses"
-        >
-          ▤ Courses
-        </Link>
-
-        <Link
-          className={pathname.startsWith("/pages") ? "active" : ""}
-          href="/pages"
-        >
-          ▧ Page builder
-        </Link>
-        <Link
-          className={pathname.startsWith("/settings") ? "active" : ""}
-          href="/settings"
-        >
-          ⚙ Website settings
-        </Link>
+        {visibleNavigation.map(([icon, label, href]) => (
+          <Link
+            className={
+              (href === "/" ? pathname === href : pathname.startsWith(href))
+                ? "active"
+                : ""
+            }
+            href={href}
+            key={href}
+          >
+            <span className="sidebar-nav-icon" aria-hidden="true">{icon}</span>
+            <span>{label}</span>
+          </Link>
+        ))}
       </nav>
       <button onClick={onLogout}>↪ Sign out</button>
     </aside>

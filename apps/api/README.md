@@ -2,18 +2,18 @@
 
 NestJS backend API for the frontend, admin, and student applications.
 
-Implementation: NestJS + Prisma + PostgreSQL, with modules for authentication, users,
+Implementation: NestJS + Prisma + MySQL, with modules for authentication, users,
 students, applications, universities, courses, destinations, and leads.
 
 ## Setup
 
 Create `apps/api/.env` from `.env.example`, then set `DATABASE_URL` to your
-PostgreSQL connection string.
+MySQL connection string in `DATABASE_URL`.
 
 ```bash
 npm --prefix apps/api install
 npm run db:generate
-npm run db:migrate -- --name init
+npm run db:migrate
 npm run dev:api
 ```
 

@@ -17,3 +17,4 @@ CREATE INDEX "auth_sessions_userId_idx" ON "auth_sessions"("userId");
 CREATE INDEX "auth_sessions_expiresAt_idx" ON "auth_sessions"("expiresAt");
 ALTER TABLE "auth_sessions" ADD CONSTRAINT "auth_sessions_userId_fkey"
   FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+

@@ -11,9 +11,11 @@ import { LeadsModule } from "./leads/leads.module";
 import { CatalogModule } from "./catalog/catalog.module";
 import { APP_GUARD } from "@nestjs/core";
 import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
+import { UsersModule } from "./users/users.module";
+import { BlogModule } from "./blog/blog.module";
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), PrismaModule, ThrottlerModule.forRoot([{ ttl: 60000, limit: 240 }]), AuthModule, SettingsModule, PagesModule, MediaModule, LeadsModule, CatalogModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), PrismaModule, ThrottlerModule.forRoot([{ ttl: 60000, limit: 240 }]), AuthModule, SettingsModule, PagesModule, MediaModule, LeadsModule, CatalogModule, UsersModule, BlogModule],
   controllers: [AppController, HealthController],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })

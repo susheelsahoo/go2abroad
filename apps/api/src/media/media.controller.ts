@@ -13,13 +13,14 @@ import {
 import { FileInterceptor } from "@nestjs/platform-express";
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from "@nestjs/swagger";
 import { z } from "zod";
-import { CmsGuard, CmsRequest, PublishPermission } from "../auth/cms.guard";
+import { ADMIN_ROLES, CmsGuard, CmsRequest, CmsRoles, PublishPermission } from "../auth/cms.guard";
 import { validate } from "../pages/pages.dto";
 import { MediaService } from "./media.service";
 
 @ApiTags("Media")
 @ApiBearerAuth()
 @UseGuards(CmsGuard)
+@CmsRoles(...ADMIN_ROLES)
 @Controller("api/media")
 export class MediaController {
   constructor(private readonly service: MediaService) {}

@@ -24,3 +24,4 @@ CREATE TABLE "reviews" (
   CONSTRAINT "reviews_pkey" PRIMARY KEY ("id")
 );
 CREATE INDEX "reviews_isPublished_idx" ON "reviews"("isPublished");
+

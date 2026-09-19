@@ -35,3 +35,4 @@ CREATE INDEX "courses_level_idx" ON "courses"("level");
 CREATE INDEX "courses_universityId_idx" ON "courses"("universityId");
 CREATE INDEX "courses_isPublished_idx" ON "courses"("isPublished");
 ALTER TABLE "courses" ADD CONSTRAINT "courses_universityId_fkey" FOREIGN KEY ("universityId") REFERENCES "universities"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+

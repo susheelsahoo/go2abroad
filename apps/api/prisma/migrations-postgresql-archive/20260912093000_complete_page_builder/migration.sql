@@ -29,3 +29,4 @@ CREATE TABLE "navigation_items" (
 CREATE INDEX "navigation_items_navigationId_parentId_order_idx" ON "navigation_items"("navigationId","parentId","order");
 CREATE TABLE "audit_logs" ("id" TEXT NOT NULL PRIMARY KEY, "actorId" TEXT NOT NULL, "action" TEXT NOT NULL, "pageId" TEXT, "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP);
 CREATE INDEX "audit_logs_pageId_createdAt_idx" ON "audit_logs"("pageId","createdAt");
+

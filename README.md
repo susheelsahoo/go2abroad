@@ -12,7 +12,7 @@ dashboard, student portal, and NestJS backend API.
 | Student portal | `apps/student` | http://localhost:3002 | Student-facing application |
 | Backend API | `apps/api` | http://localhost:4000 | API, authentication, and content |
 
-The API uses PostgreSQL through Prisma. The reusable page-builder package is in
+The API uses MySQL through Prisma. The reusable page-builder package is in
 `packages/page-builder` and is built automatically before the development and
 build commands that need it.
 
@@ -22,14 +22,14 @@ Install the following before starting:
 
 - Node.js 20 or newer
 - npm 10 or newer
-- PostgreSQL 14 or newer
+- MySQL 8 or newer (XAMPP MySQL is supported)
 
 Check your installed versions:
 
 ```bash
 node --version
 npm --version
-psql --version
+mysql --version
 ```
 
 ## Initial setup
@@ -46,14 +46,14 @@ npm --prefix apps/student install
 npm --prefix apps/api install
 ```
 
-Create a PostgreSQL database. The default local connection expected by the
-project is `go2abroad` with user `postgres` and password `postgres`:
+Start MySQL and create the application database. The default local connection
+expected by the project is `go2abroad` with user `root` and no password:
 
 ```bash
-createdb go2abroad
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS go2abroad CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 ```
 
-If your PostgreSQL credentials or database name are different, update
+If your MySQL credentials, host, port, or database name are different, update
 `apps/api/.env` accordingly.
 
 Create the environment files from their examples:
@@ -72,6 +72,10 @@ Generate the Prisma client and apply the database migrations:
 npm --prefix apps/api run db:generate
 npm --prefix apps/api run db:migrate
 ```
+
+The Prisma provider is configured for MySQL. The previous PostgreSQL migration
+files are preserved under `apps/api/prisma/migrations-postgresql-archive/`; the
+active migration history contains the MySQL baseline.
 
 Optionally load the initial data:
 
@@ -129,7 +133,7 @@ Open http://localhost:3002.
 
 ### Backend API
 
-Make sure PostgreSQL is running and the API setup has been completed first.
+Make sure MySQL is running and the API setup has been completed first.
 
 ```bash
 npm run dev:api

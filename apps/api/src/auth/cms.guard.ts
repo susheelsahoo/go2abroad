@@ -14,12 +14,17 @@ import { PrismaService } from "../prisma.service";
 export type CmsActor = { id: string; role: string; sessionId: string };
 export type CmsRequest = Request & { actor: CmsActor };
 export const PublishPermission = () => SetMetadata("cms:publish", true);
-export const CMS_ROLES = [
+export const CmsRoles = (...roles: string[]) => SetMetadata("cms:roles", roles);
+export const ADMIN_ROLES = [
   "SUPER_ADMIN",
   "ADMIN",
   "CONTENT_MANAGER",
-  "EDITOR",
   "SEO_MANAGER",
+  "EDITOR",
+];
+export const CMS_ROLES = [
+  ...ADMIN_ROLES,
+  "COUNSELLOR",
 ];
 
 @Injectable()
@@ -63,6 +68,12 @@ export class CmsGuard implements CanActivate {
       throw new UnauthorizedException("Session expired.");
     if (!CMS_ROLES.includes(session.user.role))
       throw new ForbiddenException("Content management permission required.");
+    const allowedRoles = this.reflector.getAllAndOverride<string[]>(
+      "cms:roles",
+      [context.getHandler(), context.getClass()],
+    );
+    if (allowedRoles && !allowedRoles.includes(session.user.role))
+      throw new ForbiddenException("You do not have permission to access this module.");
     const publishing = this.reflector.getAllAndOverride<boolean>(
       "cms:publish",
       [context.getHandler(), context.getClass()],

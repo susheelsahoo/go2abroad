@@ -18,3 +18,4 @@ CREATE TABLE "leads" (
 CREATE INDEX "leads_status_idx" ON "leads"("status");
 CREATE INDEX "leads_createdAt_idx" ON "leads"("createdAt");
 CREATE INDEX "leads_email_idx" ON "leads"("email");
+

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { cmsApi, messageOf } from "../../lib/cms-api";
+import { AdminShell } from "../../components/AdminShell";
 
 type Lead = {
   id: string;
@@ -54,7 +55,8 @@ export default function LeadsPage() {
   }
 
   return (
-    <div className="body">
+    <AdminShell title="Leads">
+      <div className="body">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Lead management</p>
@@ -91,6 +93,7 @@ export default function LeadsPage() {
           </table>
         )}
       </section>
-    </div>
+      </div>
+    </AdminShell>
   );
 }

@@ -11,3 +11,4 @@ CREATE TABLE "website_settings" (
   CONSTRAINT "website_settings_pkey" PRIMARY KEY ("id")
 );
 CREATE UNIQUE INDEX "website_settings_key_key" ON "website_settings"("key");
+

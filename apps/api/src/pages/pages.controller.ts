@@ -15,7 +15,7 @@ import {
 } from "@nestjs/common";
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { z } from "zod";
-import { CmsGuard, CmsRequest, PublishPermission } from "../auth/cms.guard";
+import { ADMIN_ROLES, CmsGuard, CmsRequest, CmsRoles, PublishPermission } from "../auth/cms.guard";
 import { validate } from "./pages.dto";
 import { PagesService } from "./pages.service";
 import { ConfigurationBody, RevisionBody, SectionBody } from "./pages.swagger";
@@ -23,6 +23,7 @@ import { ConfigurationBody, RevisionBody, SectionBody } from "./pages.swagger";
 @ApiTags("Pages")
 @ApiBearerAuth()
 @UseGuards(CmsGuard)
+@CmsRoles(...ADMIN_ROLES)
 @Controller("api/pages")
 export class PagesController {
   constructor(private readonly service: PagesService) {}
@@ -139,6 +140,7 @@ export class PagesController {
 @ApiTags("Page Sections")
 @ApiBearerAuth()
 @UseGuards(CmsGuard)
+@CmsRoles(...ADMIN_ROLES)
 @Controller("api/sections")
 export class SectionsController {
   constructor(private readonly service: PagesService) {}
