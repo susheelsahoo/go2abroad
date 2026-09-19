@@ -181,6 +181,8 @@ application ports are 3001, 3002, and 4000.
 
 ## Useful commands
 
+For GoDaddy VPS deployment, see [GODADDY_DEPLOYMENT.md](GODADDY_DEPLOYMENT.md).
+
 ```bash
 npm run typecheck     # Type-check all applications
 npm run lint          # Run ESLint

@@ -1,7 +1,12 @@
 {
   "name": "go2abroad-homepage",
   "private": true,
-  "overrides": { "next": { "postcss": "^8.5.28", "sharp": "^0.35.4" } },
+  "overrides": {
+    "next": {
+      "postcss": "^8.5.28",
+      "sharp": "^0.35.4"
+    }
+  },
   "scripts": {
     "build:cms": "npm --prefix packages/page-builder run build",
     "predev:all": "npm run build:cms",
@@ -23,7 +28,8 @@
   "dependencies": {
     "next": "^15.5.25",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
