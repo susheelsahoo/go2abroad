@@ -3,7 +3,10 @@
 NestJS backend API for the frontend, admin, and student applications.
 
 Implementation: NestJS + Prisma + MySQL, with modules for authentication, users,
-students, applications, universities, courses, destinations, and leads.
+students, website settings, pages, media, blogs, catalogue records, and leads.
+
+Student applications, documents, destination management, and notifications are
+planned workflows; they are not fully implemented API modules yet.
 
 ## Setup
 
