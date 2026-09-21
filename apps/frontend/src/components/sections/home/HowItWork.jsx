@@ -12,12 +12,11 @@ export default function HowItWork() {
         <div className="row align-items-end">
           <div className="col-lg-6">
             <div className="sisf-sis-section-title sis-section-title">
-              <span className="sisf-m-subtitle sis-comman-bg sis-text-anime-style-3">
+              <span className="sisf-m-subtitle sis-comman-bg">
                 ABOUT US · WHY CHOOSE GO2ABROAD
               </span>
-              <h2 className="sisf-m-title sis-text-anime-style-3">
-                Why choose
-                <span className="sisf-e-colored">
+              <h2 className="sisf-m-title">
+                Why choose   <span className="sisf-e-colored">
                   Go2Abroad.
                 </span>
               </h2>
@@ -25,12 +24,12 @@ export default function HowItWork() {
           </div>
           <div className="col-lg-6">
             <div className="sisf-sis-section-title sis-section-title">
-              <div className="sisf-m-text" data-aos="fade-up" data-aos-delay="100">
+              <div className="sisf-m-text" data-aos="fade-up--" data-aos-delay="100">
                 <p className="mt-0">
                   There is a lot to figure out. You do not have to figure it out alone. We bring clarity, care and local know-how to every step.
                 </p>
               </div>
-              <div className="sisf-m-button pt-4" data-aos="fade-up" data-aos-delay="300">
+              <div className="sisf-m-button pt-4" data-aos="fade-up--" data-aos-delay="300">
                 <Link className="sis-btn-default" to="/contact">
                   Meet Your Counsellor
                   <i className="fa-solid fa-arrow-right-long"></i>
@@ -56,8 +55,8 @@ export default function HowItWork() {
               </div>
             </div>
             <div className="col-lg-9">
-              <div className="row">
-                <div className="col-lg-3">
+              <div className="row m-0">
+                <div className="col-lg-4 pl-0">
                   <div className="sisf-blog-item mb-0 bg-white p-3 rounded-3">
                     <div className="sisf-e-inner position-relative">
                       <div className="sisf-e-content p-0">
@@ -90,7 +89,7 @@ export default function HowItWork() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-3">
+                <div className="col-lg-4">
                   <div className="sisf-blog-item mb-0 bg-white p-3 rounded-3">
                     <div className="sisf-e-inner position-relative">
                       <div className="sisf-e-content p-0">
@@ -110,7 +109,7 @@ export default function HowItWork() {
                             </h2>
                             <p className="sisf-e-excerpt mb-3">
                               Curated shortlists of best-fit universities and programs across the UK, USA, Canada, Australia, Ireland...
-                            </p>
+                            </p><br/>
                           </div>
                           <div className="sisf-m-button">
                             <Link className="sis-btn-default" to="/services#university-shortlisting">
@@ -123,7 +122,7 @@ export default function HowItWork() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-3">
+                <div className="col-lg-4">
                   <div className="sisf-blog-item mb-0 bg-white p-3 rounded-3">
                     <div className="sisf-e-inner position-relative">
                       <div className="sisf-e-content p-0">
@@ -142,9 +141,7 @@ export default function HowItWork() {
                               </Link>
                             </h2>
                             <p className="sisf-e-excerpt mb-3">
-                              Structured prep support and test strategy to help you hit the score your target university needs
-                              <br />
-                              .
+                              Structured prep support and test strategy to help you hit the score your target university needs.
                             </p>
                           </div>
                           <div className="sisf-m-button">
@@ -158,39 +155,7 @@ export default function HowItWork() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-3">
-                  <div className="sisf-blog-item mb-0 bg-white p-3 rounded-3">
-                    <div className="sisf-e-inner position-relative">
-                      <div className="sisf-e-content p-0">
-                        <div className="sisf-e-info mb-2 mt-0 sisf-info--top-holder">
-                          <div className="post-meta-list-after">
-                            <Link className="post-cat fs-1" to="/services#visa-assistance">
-                              ◎
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="sisf-e-content-inner">
-                          <div className="sisf-e-text">
-                            <h2 className="sisf-e-title sis-comman-title mb-2">
-                              <Link className="sisf-e-title-link" to="/services#visa-assistance">
-                                Application & Admission Support
-                              </Link>
-                            </h2>
-                            <p className="sisf-e-excerpt mb-3">
-                              End-to-end handling of SOPs, applications, and documentation, so you get an offer without touching....
-                            </p>
-                          </div>
-                          <div className="sisf-m-button">
-                            <Link className="sis-btn-default" to="/services#visa-assistance">
-                              Read More
-                              <i className="fa-solid fa-arrow-right-long"></i>
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </div>
           </div>

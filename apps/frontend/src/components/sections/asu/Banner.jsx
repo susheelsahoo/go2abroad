@@ -5,7 +5,7 @@ export default function Banner() {
     <div className="sisf-banner position-relative">
       <div className="banner-img">
         <figure>
-          <img src={img("/images/page-banner.png")} alt="Arizona State University" />
+          <img src={img("/images/service-detail-image-1.jpg")} alt="Arizona State University" />
         </figure>
       </div>
       <div className="sisf-page-title sisf-m sisf-title--standard sisf-alignment--center">
@@ -40,7 +40,7 @@ export default function Banner() {
             </span>
           </div>
           <div className="sisf-m-content sisf-content-grid">
-            <h1 className="sisf-m-title text-white sis-text-anime-style-3 entry-title">
+            <h1 className="sisf-m-title text-white entry-title">
               Arizona State University
             </h1>
           </div>

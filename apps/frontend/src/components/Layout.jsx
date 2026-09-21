@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import CursorFx from "./CursorFx";
 import RouteEffects from "./RouteEffects";
+import FloatingContactButtons from "./FloatingContactButtons";
 
 export default function Layout() {
   return (
@@ -12,6 +13,7 @@ export default function Layout() {
       <Outlet />
       <Footer />
       <CursorFx />
+      <FloatingContactButtons />
     </>
   );
 }

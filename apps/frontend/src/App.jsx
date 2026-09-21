@@ -10,11 +10,10 @@ import Faq from "./pages/Faq";
 import Contact from "./pages/Contact";
 import Usa from "./pages/Usa";
 import ArizonaStateUniversity from "./pages/ArizonaStateUniversity";
-import { WebsiteSettingsProvider } from "./context/WebsiteSettingsContext";
 
 export default function App() {
   return (
-    <WebsiteSettingsProvider>
+
      <Routes>
 
   <Route element={<Layout />}>
@@ -34,6 +33,6 @@ export default function App() {
   </Route>
 
 </Routes>
-    </WebsiteSettingsProvider>
+
   );
 }

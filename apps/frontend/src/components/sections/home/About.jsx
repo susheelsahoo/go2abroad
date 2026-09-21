@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+ import { useEffect, useRef, useState } from "react";
 
 const journeySteps = [
   {
@@ -49,23 +49,28 @@ const pathD =
   "M40,26 C82,26 82,156 124,156 C166,156 166,26 208,26 C250,26 250,156 292,156 C334,156 334,26 376,26 C418,26 418,156 460,156";
 
 export default function About() {
+  const sectionRef = useRef(null);
   const wrapRef = useRef(null);
   const pathRef = useRef(null);
   const animationRef = useRef(null);
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
+    const section = sectionRef.current;
     const wrap = wrapRef.current;
     const path = pathRef.current;
+    const progressPath = wrap.querySelector(".sis-journey-progress-path");
 
-    if (!wrap || !path) return;
+    if (!section || !wrap || !path || !progressPath) return;
 
     const icons = Array.from(
       wrap.querySelectorAll(".sis-step-icon")
     );
 
+    // Trigger Arrival slightly before the line reaches the final frame.
     const thresholds = icons.map((_, index) => {
       if (index === 0) return 0.025;
+      if (index === icons.length - 1) return 0.995;
       return index / (icons.length - 1);
     });
 
@@ -92,9 +97,14 @@ export default function About() {
       const duration = 5600;
       const startTime = performance.now();
 
+      // Keep the original grey line visible and animate a green line over it.
       path.style.strokeDasharray = `${length}`;
-      path.style.strokeDashoffset = `${length}`;
+      path.style.strokeDashoffset = "0px";
       path.style.transition = "none";
+
+      progressPath.style.strokeDasharray = `${length}`;
+      progressPath.style.strokeDashoffset = `${length}`;
+      progressPath.style.transition = "none";
 
       icons.forEach((icon) => {
         icon.classList.remove(
@@ -113,7 +123,11 @@ export default function About() {
             ? 2 * rawProgress * rawProgress
             : 1 - Math.pow(-2 * rawProgress + 2, 2) / 2;
 
-        path.style.setProperty("stroke-dashoffset", `${length * (1 - progress)}px`, "important");
+        progressPath.style.setProperty(
+          "stroke-dashoffset",
+          `${length * (1 - progress)}px`,
+          "important"
+        );
 
         thresholds.forEach((threshold, index) => {
           const icon = icons[index];
@@ -121,20 +135,16 @@ export default function About() {
 
           if (progress >= threshold && !icon.classList.contains("sis-journey-active")) {
             icon.classList.add("sis-journey-active");
-            icon.classList.add("sis-journey-current");
-
-            // Remove current after the one-time ripple so the completed
-            // circles stay light green without continuously blinking.
-            window.setTimeout(() => {
-              icon.classList.remove("sis-journey-current");
-            }, 1500);
+            // Keep the completed step in the continuous soft-blink state.
+            // No one-time pulse class is applied, so there is no second jolt.
+            icon.classList.remove("sis-journey-current");
           }
         });
 
         if (rawProgress < 1) {
           animationRef.current = requestAnimationFrame(animate);
         } else {
-          path.style.setProperty("stroke-dashoffset", "0px", "important");
+          progressPath.style.setProperty("stroke-dashoffset", "0px", "important");
           animationRef.current = null;
         }
       };
@@ -149,16 +159,17 @@ export default function About() {
         setStarted(true);
         resetJourney();
 
-        // Let the section become visible first, then start the graph.
-        window.setTimeout(startAnimation, 180);
+        // Start as soon as the Journey section itself enters the viewport.
+        window.setTimeout(startAnimation, 80);
         observer.disconnect();
       },
       {
-        threshold: 0.28,
+        threshold: 0.18,
+        rootMargin: "0px 0px 0px 0px",
       }
     );
 
-    observer.observe(wrap);
+    observer.observe(section);
 
     return () => {
       observer.disconnect();
@@ -167,16 +178,16 @@ export default function About() {
   }, []);
 
   return (
-    <div className="sis-about-section section pt-0 sis-journey-section">
+    <div ref={sectionRef} className="sis-about-section section pt-0 sis-journey-section">
       <div className="container">
         <div className="row">
           <div className="col-12">
             <div className="sisf-sis-section-title text-center sis-section-title sis-journey-heading">
-              <span className="sisf-m-subtitle sis-text-anime-style-3">
+              <span className="sisf-m-subtitle">
                 WHAT WE OFFER
               </span>
 
-              <h2 className="sisf-m-title sis-text-anime-style-3">
+              <h2 className="sisf-m-title">
                 A Six Step Student Journey
                 <br />
                 <span className="sisf-e-colored">
@@ -215,6 +226,17 @@ export default function About() {
               strokeWidth="2"
               strokeLinecap="round"
               opacity="0.5"
+            />
+
+            <path
+              className="sis-journey-progress-path"
+              d={pathD}
+              fill="none"
+            stroke="#78C98A"
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="1"
+              pointerEvents="none"
             />
           </svg>
 

@@ -1,441 +1,184 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-const img = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+
+const img = (path) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
 const TEAM_PROFILES = {
   "Chakrapalit Narayan": {
     role: "Founder & CEO of Go2Abroad",
-    image: img("/images/Chakrapalit_Narayan.jpg"),
-    heading: "The Go2Abroad Founder's Story",
-    paragraphs: [
-      "Eight years ago, Chakrapalit Narayan was drawing blueprints for machines. Today, he draws blueprints for futures.",
-      "As Founder & CEO of Go2Abroad, he's built something rare: a zero-fee study abroad platform rooted in transparency, where every student — from a first-gen Oxford hopeful to a future doctor bound for Georgia — gets a real champion in their corner.",
-      "His path here wasn't linear. He trained as a mechanical engineer, earning his B.Tech from Dr. A.P.J. Abdul Kalam Technical University, before pivoting into education. At PolicyBazaar, he consistently delivered 150% of targets as an IRDAI-certified Advisor. At Leverage Edu, he rose from Senior Counselor to Assistant Manager — guiding 100 students into UK and US universities in three months and leading a 12-person team to record revenue. At The Modern School Group, he scaled enrollment marketing across three NCR campuses.",
-      "In September 2024, he launched Go2Abroad with a simple belief: the best education journey should begin with clarity, not confusion.",
-    ],
+    image: img("/images/Chakrapalit_Narayan.png"),
+    linkedin:
+      "https://in.linkedin.com/in/chakrapalit-narayan-%E0%A4%9A%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A4%BF%E0%A4%A4-%E0%A4%A8%E0%A4%BE%E0%A4%B0%E0%A4%BE%E0%A4%AF%E0%A4%A3-770553166",
+    short:
+      "Building a transparent, student-first study abroad journey from counselling to arrival.",
+    email: "info@go2abroad.co",
+    phone: "+91 79053 77279",
+    description: "Founder & CEO of Go2Abroad, focused on building a transparent, student-first study abroad journey from counselling to arrival.",
   },
-  "David Carter": {
-    role: "Study Abroad Advisor",
-    image: img("/images/team-image-2.png"),
-    heading: "Helping Students Find Their Best-Fit Path",
-    paragraphs: [
-      "David helps students compare countries, courses and universities with a practical, student-first approach.",
-      "He works closely with applicants to turn academic goals into a clear study abroad plan and keeps every step of the journey easy to understand.",
-    ],
+  "Amrit Seth": {
+    role: "Operational & Digital Support",
+    image: img("/images/amritSeth.png"),
+    linkedin: "https://in.linkedin.com/in/amrit-seth-ab05782a2",
+    short:
+      "Supporting Go2Abroad through reliable digital systems, operations and a detail-focused approach.",
+    email: "operation@go2abroad.co",
+    phone: "+91 7518437330",
+    description: "Operational & Digital Support professional helping Go2Abroad with digital systems, operations and day-to-day execution.",
   },
-  "Emily Thompson": {
-    role: "Visa Documentation Specialist",
-    image: img("/images/team-image-3.png"),
-    heading: "Making Visa Documentation Simple",
-    paragraphs: [
-      "Emily focuses on documentation accuracy and visa readiness, helping students prepare complete and well-organized applications.",
-      "Her attention to detail helps reduce avoidable mistakes and gives applicants confidence before submission.",
-    ],
-  },
-  "Michael Reynolds": {
-    role: "Work Permit Consultant",
-    image: img("/images/team-image-4.png"),
-    heading: "Supporting International Career Plans",
-    paragraphs: [
-      "Michael guides students and professionals who want to understand work opportunities and post-study pathways abroad.",
-      "He focuses on practical options, eligibility and the next steps required to move forward confidently.",
-    ],
+  "Sandhya Kathuria": {
+    role: "Cheif Business Officer",
+    image: img("/images/sandhya.png"),
+    linkedin: "https://in.linkedin.com/in/sandhya-jhamtani-912ba587",
+    short:
+      "Bringing deep international education experience and student-focused guidance to every journey.",
+    email: "sandhya.k@go2abroad.co",
+    phone: "+91 99581 55484",
+    description: "Cheif Business Officer bringing international education experience and student-focused guidance to every journey.",
   },
 };
+
+function TeamCard({ member, onHover }) {
+  const profile = TEAM_PROFILES[member];
+
+  return (
+    <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
+      <article className="g2-team-card" onMouseEnter={() => onHover(member)} tabIndex={0} onFocus={() => onHover(member)}>
+        <div className="g2-team-image">
+          <img src={profile.image} alt={member} loading="lazy" />
+
+          <div className="g2-team-hover">
+            <div className="g2-team-hover-content">
+              <div className="g2-team-name-row">
+                <h3>{member}</h3>
+                <a
+                  className="g2-team-linkedin"
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${member} LinkedIn`}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <i className="fa-brands fa-linkedin-in" />
+                </a>
+              </div>
+
+              <span className="g2-team-role">{profile.role}</span>
+              <p>{profile.short}</p>
+
+              <span className="g2-team-arrow" aria-hidden="true">
+                <i className="fa-solid fa-arrow-right-long" />
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="g2-team-default-info">
+          <div>
+            <h3>{member}</h3>
+            <p>{profile.role}</p>
+          </div>
+          <span className="g2-team-default-arrow">
+            <i className="fa-solid fa-arrow-right-long" />
+          </span>
+        </div>
+      </article>
+    </div>
+  );
+}
+
+function TeamProfileModal({ member, onClose }) {
+  const profile = member ? TEAM_PROFILES[member] : null;
+
+  useEffect(() => {
+    const onKeyDown = (event) => { if (event.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKeyDown);
+    document.body.classList.add("team-modal-open");
+    return () => { document.removeEventListener("keydown", onKeyDown); document.body.classList.remove("team-modal-open"); };
+  }, [onClose, member]);
+
+  if (!member || !profile) return null;
+
+  return (
+    <div className="g2-team-popup-layer" role="dialog" aria-modal="true" aria-label={`${member} profile`}>
+      <div className="g2-team-popup-backdrop" onClick={onClose} />
+      <div className="g2-team-popup" onMouseLeave={onClose}>
+        <div className="g2-team-popup-image-wrap">
+          <img src={profile.image} alt={member} />
+          <div className="g2-team-popup-image-shade" />
+        </div>
+        <div className="g2-team-popup-content">
+          <div className="g2-team-popup-topline">
+            <span>TEAM GO2ABROAD</span>
+            <button type="button" className="g2-team-popup-close" onClick={onClose} aria-label="Close profile"><i className="fa-solid fa-xmark" /></button>
+          </div>
+          <div className="g2-team-popup-name-row">
+            <h2>{member}</h2>
+            <a className="g2-team-popup-linkedin" href={profile.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} aria-label={`${member} LinkedIn`}><i className="fa-brands fa-linkedin-in" /></a>
+          </div>
+          <span className="g2-team-popup-role">{profile.role}</span>
+          <div className="g2-team-popup-line" />
+          <h3>About {member}</h3>
+          <p className="g2-team-popup-description">{profile.description}</p>
+          <div className="g2-team-popup-contact">
+            <a href={`mailto:${profile.email}`}><i className="fa-solid fa-envelope" />{profile.email}</a>
+            <a href={`tel:${profile.phone.replace(/\s+/g, "")}`}><i className="fa-solid fa-phone" />{profile.phone}</a>
+          </div>
+          <div className="g2-team-popup-footer">
+            <span>Helping students move from ambition to arrival.</span>
+            <Link className="g2-team-popup-cta" to="/contact" onClick={onClose}>View Full Profile <i className="fa-solid fa-arrow-right-long" /></Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function TeamMember() {
   const [selectedMember, setSelectedMember] = useState(null);
 
-  useEffect(() => {
-    if (!selectedMember) return;
-
-    const handleEscape = (event) => {
-      if (event.key === "Escape") setSelectedMember(null);
-    };
-
-    document.body.classList.add("team-modal-open");
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.body.classList.remove("team-modal-open");
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [selectedMember]);
-
-  const openMember = (event, name) => {
-    if (event.target.closest(".sisf-m-social-icons")) return;
-    event.preventDefault();
-    event.stopPropagation();
-    setSelectedMember(TEAM_PROFILES[name] ? name : "Chakrapalit Narayan");
-  };
-
-  const closeMember = () => setSelectedMember(null);
-
   return (
-    <div className="sis-team-member-section sis-comman-background section">
+    <section className="sis-team-member-section sis-comman-background section">
       <div className="container">
         <div className="row align-items-end">
           <div className="col-lg-6">
             <div className="sisf-sis-section-title sis-section-title">
-              <span className="sisf-m-subtitle sis-text-anime-style-3">
+              <span className="sisf-m-subtitle">
                 Meet Team Go2Abroad
               </span>
-              <h2 className="sisf-m-title text-white sis-text-anime-style-3">
-                <span className="sisf-e-colored">
-                  Meet The Heroes Behind
-                </span>
+              <h2 className="sisf-m-title text-white">
+                <span className="sisf-e-colored">Meet The Heroes Behind</span>
                 <br />
                 Your Journey
               </h2>
             </div>
           </div>
+
           <div className="col-lg-6">
             <div className="sisf-sis-section-title sis-section-title">
-              <div className="sisf-m-text" data-aos="fade-up" data-aos-delay="100">
+              <div className="sisf-m-text">
                 <p className="text-white mt-0">
-                  Whether you need expert course advising, assistance with funding and education loans, digital portal support, or meticulous visa documentation, our dedicated professionals
-						collaborate behind the scenes to support every step of your overseas education.
+                  Our dedicated professionals work together across counselling,
+                  operations, digital support and global education guidance.
                 </p>
               </div>
-              <div className="sisf-m-button pt-4" data-aos="fade-up" data-aos-delay="500">
+              <div className="sisf-m-button pt-4">
                 <Link className="sis-btn-default" to="/contact">
                   Talk To Our Counsellors
-                  <i className="fa-solid fa-arrow-right-long"></i>
+                  <i className="fa-solid fa-arrow-right-long" />
                 </Link>
               </div>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-12">
-            <div className="sis-comman--swiper-slider" data-aos="fade-up" data-aos-delay="300">
-              <div className="swiper">
-                <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <div className="sisf-sis-team-member sisf-item-layout-info-from-bottom sisf-hover mb-3 page" onClick={(event) => openMember(event, "Chakrapalit Narayan")} role="button" tabIndex={0} onKeyDown={(event) => event.key === "Enter" && openMember(event, "Chakrapalit Narayan")}>
-                      <div className="sisf-e-inner position-relative">
-                        <div className="image-with-icons position-relative">
-                          <div className="sis-team-members-img sis-radius">
-                            <a href="#" className="sisf-sis-page-link position-relative">
-                              <figure>
-                                <img src={img("/images/Chakrapalit_Narayan.jpg")} className="w-100" alt="Go2Abroad" />
-                              </figure>
-                            </a>
-                          </div>
-                          <div className="sisf-m-social-icons">
-                            <ul className="social-icons list-unstyled d-flex align-items-center justify-content-center gap-3 p-0 m-0">
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-facebook"></i>
-                                </a>
-                              </li>
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-x-twitter"></i>
-                                </a>
-                              </li>
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-instagram"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="fa-brands fa-linkedin"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="sis-team-member-content d-flex align-items-center justify-content-between">
-                          <div className="contents-out">
-                            <h2 className="sisf-m-title sis-comman-title mb-1">
-                              <a href="#" className="sisf-sis-page-link">
-                                Chakrapalit Narayan
-                              </a>
-                            </h2>
-                            <p className="sisf-m-role mb-0">
-                              Founder & CEO of Go2Abroad
-                            </p>
-                          </div>
-                          <div className="sis-e-icon-link">
-                            <a href="#">
-                              <i className="fa-solid fa-arrow-right-long"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="sisf-sis-team-member sisf-item-layout-info-from-bottom sisf-hover mb-3 page" onClick={(event) => openMember(event, "David Carter")} role="button" tabIndex={0} onKeyDown={(event) => event.key === "Enter" && openMember(event, "David Carter")}>
-                      <div className="sisf-e-inner position-relative">
-                        <div className="image-with-icons position-relative">
-                          <div className="sis-team-members-img sis-radius">
-                            <a href="#" className="sisf-sis-page-link position-relative">
-                              <figure>
-                                <img src={img("/images/team-image-2.png")} className="w-100" alt="Go2Abroad" />
-                              </figure>
-                            </a>
-                          </div>
-                          <div className="sisf-m-social-icons">
-                            <ul className="social-icons list-unstyled d-flex align-items-center justify-content-center gap-3 p-0 m-0">
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-facebook"></i>
-                                </a>
-                              </li>
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-x-twitter"></i>
-                                </a>
-                              </li>
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-instagram"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="fa-brands fa-linkedin"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="sis-team-member-content d-flex align-items-center justify-content-between">
-                          <div className="contents-out">
-                            <h2 className="sisf-m-title sis-comman-title mb-1">
-                              <a href="#" className="sisf-sis-page-link">
-                                David Carter
-                              </a>
-                            </h2>
-                            <p className="sisf-m-role mb-0">
-                              Study Abroad Advisor
-                            </p>
-                          </div>
-                          <div className="sis-e-icon-link">
-                            <a href="#">
-                              <i className="fa-solid fa-arrow-right-long"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="sisf-sis-team-member sisf-item-layout-info-from-bottom sisf-hover mb-3 page" onClick={(event) => openMember(event, "Emily Thompson")} role="button" tabIndex={0} onKeyDown={(event) => event.key === "Enter" && openMember(event, "Emily Thompson")}>
-                      <div className="sisf-e-inner position-relative">
-                        <div className="image-with-icons position-relative">
-                          <div className="sis-team-members-img sis-radius">
-                            <a href="#" className="sisf-sis-page-link position-relative">
-                              <figure>
-                                <img src={img("/images/team-image-3.png")} className="w-100" alt="Go2Abroad" />
-                              </figure>
-                            </a>
-                          </div>
-                          <div className="sisf-m-social-icons">
-                            <ul className="social-icons list-unstyled d-flex align-items-center justify-content-center gap-3 p-0 m-0">
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-facebook"></i>
-                                </a>
-                              </li>
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-x-twitter"></i>
-                                </a>
-                              </li>
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-instagram"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="fa-brands fa-linkedin"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="sis-team-member-content d-flex align-items-center justify-content-between">
-                          <div className="contents-out">
-                            <h2 className="sisf-m-title sis-comman-title mb-1">
-                              <a href="#" className="sisf-sis-page-link">
-                                Emily Thompson
-                              </a>
-                            </h2>
-                            <p className="sisf-m-role mb-0">
-                              Visa Documentation Specialist
-                            </p>
-                          </div>
-                          <div className="sis-e-icon-link">
-                            <a href="#">
-                              <i className="fa-solid fa-arrow-right-long"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="sisf-sis-team-member sisf-item-layout-info-from-bottom sisf-hover mb-3 page" onClick={(event) => openMember(event, "Michael Reynolds")} role="button" tabIndex={0} onKeyDown={(event) => event.key === "Enter" && openMember(event, "Michael Reynolds")}>
-                      <div className="sisf-e-inner position-relative">
-                        <div className="image-with-icons position-relative">
-                          <div className="sis-team-members-img sis-radius">
-                            <a href="#" className="sisf-sis-page-link position-relative">
-                              <figure>
-                                <img src={img("/images/team-image-4.png")} className="w-100" alt="Go2Abroad" />
-                              </figure>
-                            </a>
-                          </div>
-                          <div className="sisf-m-social-icons">
-                            <ul className="social-icons list-unstyled d-flex align-items-center justify-content-center gap-3 p-0 m-0">
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-facebook"></i>
-                                </a>
-                              </li>
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-x-twitter"></i>
-                                </a>
-                              </li>
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-instagram"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="fa-brands fa-linkedin"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="sis-team-member-content d-flex align-items-center justify-content-between">
-                          <div className="contents-out">
-                            <h2 className="sisf-m-title sis-comman-title mb-1">
-                              <a href="#" className="sisf-sis-page-link">
-                                Michael Reynolds
-                              </a>
-                            </h2>
-                            <p className="sisf-m-role mb-0">
-                              Work Permit Consultant
-                            </p>
-                          </div>
-                          <div className="sis-e-icon-link">
-                            <a href="#">
-                              <i className="fa-solid fa-arrow-right-long"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="sisf-sis-team-member sisf-item-layout-info-from-bottom sisf-hover mb-3 page" onClick={(event) => openMember(event, "David Carter")} role="button" tabIndex={0} onKeyDown={(event) => event.key === "Enter" && openMember(event, "David Carter")}>
-                      <div className="sisf-e-inner position-relative">
-                        <div className="image-with-icons position-relative">
-                          <div className="sis-team-members-img sis-radius">
-                            <a href="#" className="sisf-sis-page-link position-relative">
-                              <figure>
-                                <img src={img("/images/team-image-2.png")} className="w-100" alt="Go2Abroad" />
-                              </figure>
-                            </a>
-                          </div>
-                          <div className="sisf-m-social-icons">
-                            <ul className="social-icons list-unstyled d-flex align-items-center justify-content-center gap-3 p-0 m-0">
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-facebook"></i>
-                                </a>
-                              </li>
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-x-twitter"></i>
-                                </a>
-                              </li>
-                              <li className="mb-0">
-                                <a href="#">
-                                  <i className="fa-brands fa-instagram"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="fa-brands fa-linkedin"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="sis-team-member-content d-flex align-items-center justify-content-between">
-                          <div className="contents-out">
-                            <h2 className="sisf-m-title sis-comman-title mb-1">
-                              <a href="#" className="sisf-sis-page-link">
-                                David Carter
-                              </a>
-                            </h2>
-                            <p className="sisf-m-role mb-0">
-                              Study Abroad Advisor
-                            </p>
-                          </div>
-                          <div className="sis-e-icon-link">
-                            <a href="#">
-                              <i className="fa-solid fa-arrow-right-long"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
+        <div className="row g2-team-grid">
+          <TeamCard member="Chakrapalit Narayan" onHover={setSelectedMember} />
+          <TeamCard member="Amrit Seth" onHover={setSelectedMember} />
+          <TeamCard member="Sandhya Kathuria" onHover={setSelectedMember} />
         </div>
+        <TeamProfileModal member={selectedMember} onClose={() => setSelectedMember(null)} />
       </div>
-
-      {selectedMember && (
-        <div
-          className="team-modal-overlay"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) closeMember();
-          }}
-          role="presentation"
-        >
-          <div
-            className="team-profile-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${selectedMember} profile`}
-          >
-            <button
-              type="button"
-              className="team-modal-close"
-              onClick={closeMember}
-              aria-label="Close profile"
-            >
-              <i className="fa-solid fa-xmark"></i>
-            </button>
-
-            <div className="team-modal-image">
-              <img src={TEAM_PROFILES[selectedMember].image} alt={selectedMember} />
-            </div>
-            <div className="team-modal-content">
-              <h2>{selectedMember}</h2>
-              <p className="team-modal-role">{TEAM_PROFILES[selectedMember].role}</p>
-              <span className="team-modal-line"></span>
-              <h3>{TEAM_PROFILES[selectedMember].heading}</h3>
-              {TEAM_PROFILES[selectedMember].paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+    </section>
   );
 }

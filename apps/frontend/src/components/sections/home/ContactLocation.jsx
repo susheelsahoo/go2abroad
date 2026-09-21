@@ -38,9 +38,7 @@ export default function ContactLocation() {
               </div>
               <div className="sis-info-content">
                 <span className="text-black">
-                  <b>
-                    Office Address
-                  </b>
+                  Office Address
                 </span>
                 <p id="officeAddress">
                   B-395, 2nd Floor, Nehru Ground,
@@ -55,12 +53,10 @@ export default function ContactLocation() {
               </div>
               <div className="sis-info-content">
                 <span className="text-black">
-                  <b>
-                    Call Us
-                  </b>
+                  Call Us
                 </span>
                 <p id="officePhone">
-                  +91-7068821760
+                  +91-7068821740
                 </p>
               </div>
             </div>
@@ -70,9 +66,7 @@ export default function ContactLocation() {
               </div>
               <div className="sis-info-content">
                 <span className="text-black">
-                  <b>
-                    Email
-                  </b>
+                  Email
                 </span>
                 <p id="officeEmail">
                   info@go2abroad.co

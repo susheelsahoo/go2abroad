@@ -1,10 +1,9 @@
 import {useLocation, Link} from "react-router-dom";
 import { useEffect } from "react";
-import { useWebsiteSettings } from "../context/WebsiteSettingsContext";
+const img = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+
 export default function Header() {
   const location = useLocation();
-  const { settings, assetUrl } = useWebsiteSettings();
-  const logo = assetUrl(settings.logoUrl || "/images/logo.png");
 
   useEffect(() => {
     // Legacy script.js adds .active once on initial load. React Router
@@ -22,11 +21,11 @@ export default function Header() {
       <div id="sisf-page-header-inner" className="sisf-skin--dark position-relative d-flex align-items-center">
         <div className="container">
           <Link className="navbar-brand sisf-header-logo-link mobile-block" to="/">
-            <img src={logo} alt={`${settings.siteName} logo`} style={{width: '190px'}} />
+            <img src={img("/images/logo.png")} alt="Go2Abroad Logo" style={{width: '190px'}} />
           </Link>
           <div className="sisf-centered-header-wrapper sisf--header d-flex justify-content-between align-items-center">
             <Link className="navbar-brand sisf-header-logo-link" to="/">
-              <img src={logo} alt={`${settings.siteName} logo`} style={{width: '190px'}} />
+              <img src={img("/images/logo.png")} alt="Go2Abroad Logo" style={{width: '190px'}} />
             </Link>
             <nav className="navbar navbar-expand-lg">
               <div className="collapse navbar-collapse sis-main-menu">

@@ -182,7 +182,7 @@ export const sectionSchema = z
     id: z.string().uuid(),
     type: z.string(),
     order: z.number().int().min(0),
-    data: z.record(z.unknown()),
+    data: z.record(z.string(), z.unknown()),
     settings: sectionSettingsSchema.default({}),
     isVisible: z.boolean(),
   })

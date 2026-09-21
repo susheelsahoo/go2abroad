@@ -1,10 +1,17 @@
-const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:4000").replace(/\/$/, "");
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/36cfca22e74843ec32d970ea3c9ccd48";
 
 export async function submitContactForm(form) {
   const formData = new FormData(form);
   const payload = Object.fromEntries(formData.entries());
 
-  const response = await fetch(`${API_URL}/leads`, {
+  payload._subject = "New Go2Abroad Counselling Enquiry";
+  payload._template = "table";
+  payload._captcha = "true";
+  payload._replyto = payload.email || "";
+  payload._cc = "info@go2abroad.co";
+  payload._url = window.location.href;
+
+  const response = await fetch(FORMSUBMIT_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,8 +22,8 @@ export async function submitContactForm(form) {
 
   const data = await response.json().catch(() => ({}));
 
-  if (!response.ok) {
-    throw new Error(data.message || "Unable to submit the enquiry right now.");
+  if (!response.ok || data.success === false) {
+    throw new Error(data.message || "Unable to submit the enquiry right now. If this is the first submission, the FormSubmit email must be activated once.");
   }
 
   return data;

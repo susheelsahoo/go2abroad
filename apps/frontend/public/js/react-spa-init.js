@@ -69,11 +69,14 @@
       }));
     });
 
-    document.querySelectorAll(".hero-slider-layout .swiper").forEach(function (el) {
+    document.querySelectorAll(".hero-slider-layout .swiper, .hero-swiper").forEach(function (el) {
       if (el.swiper || initialized.has(el)) return;
       initialized.add(el);
+      var heroSlides = el.querySelectorAll(".swiper-slide:not(.swiper-slide-duplicate)").length;
+      var heroHasMultipleSlides = heroSlides > 1;
       new window.Swiper(el, Object.assign({}, swiperOptions, {
-        autoplay: { delay: 6000 },
+        loop: heroHasMultipleSlides,
+        autoplay: heroHasMultipleSlides ? { delay: 6000 } : false,
         breakpoints: { 0: { slidesPerView: 1 }, 768: { slidesPerView: 1 }, 1024: { slidesPerView: 1 } },
         pagination: { el: ".hero-pagination", clickable: true },
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
@@ -83,9 +86,24 @@
 
   function initAos() {
     if (!window.AOS) return;
+
+    // Keep AOS for visual/card animations, but never animate text-only elements.
+    document.querySelectorAll("[data-aos]").forEach(function (element) {
+      var hasText = element.textContent && element.textContent.trim().length > 0;
+      var hasVisualChild = element.querySelector("img, svg, video, canvas");
+      if (hasText && !hasVisualChild) {
+        element.removeAttribute("data-aos");
+        element.removeAttribute("data-aos-delay");
+        element.removeAttribute("data-aos-duration");
+        element.removeAttribute("data-aos-easing");
+        element.removeAttribute("data-aos-anchor");
+        element.removeAttribute("data-aos-anchor-placement");
+        element.removeAttribute("data-aos-offset");
+      }
+    });
     try {
       if (!window.AOS.__go2abroadInitialized) {
-        window.AOS.init({ once: true, duration: 1000, easing: "ease-out-cubic" });
+        window.AOS.init({ once: true, duration: 650, easing: "ease-out-cubic" });
         window.AOS.__go2abroadInitialized = true;
       }
       if (typeof window.AOS.refreshHard === "function") window.AOS.refreshHard();
@@ -117,32 +135,25 @@
         tl.from(image, { xPercent: 100, duration: 1, delay: -1, scale: 1, ease: "power2.out" });
       });
 
-      document.querySelectorAll(".sis-text-anime-style-1, .sis-text-anime-style-3").forEach(function (element) {
-        if (element.dataset.g2aTextInitialized === "1") return;
-        element.dataset.g2aTextInitialized = "1";
-        var split = new window.SplitText(element, { type: "words" });
-        window.gsap.from(split.words, {
-          duration: element.classList.contains("sis-text-anime-style-1") ? 0.8 : 0.7,
-          delay: element.classList.contains("sis-text-anime-style-1") ? 0.3 : 0.15,
-          x: 10,
-          autoAlpha: 0,
-          stagger: 0.04,
-          ease: "sine.out",
-          scrollTrigger: { trigger: element, start: "top 85%" }
-        });
-      });
-
       if (typeof window.ScrollTrigger.refresh === "function") window.ScrollTrigger.refresh();
     } catch (e) {}
   }
 
   function initCounters() {
-    if (!window.jQuery || !window.jQuery.fn || !window.jQuery.fn.counterUp) return;
+    if (!window.jQuery || !window.jQuery.fn) return;
+
+    // Keep the original CounterUp animation for numbers only.
+    // Do not mark a counter as initialized until CounterUp is actually available.
+    if (!window.jQuery.fn.counterUp) {
+      window.setTimeout(initCounters, 500);
+      return;
+    }
+
     try {
       window.jQuery(".sis-counter").each(function () {
         if (this.dataset.g2aCounterInitialized === "1") return;
-        this.dataset.g2aCounterInitialized = "1";
         window.jQuery(this).counterUp({ delay: 6, time: 3000 });
+        this.dataset.g2aCounterInitialized = "1";
       });
     } catch (e) {}
   }
@@ -175,14 +186,14 @@
     var data = {
       headOffice: {
         address: "B-395, 2nd Floor, Nehru Ground, Neelam Chowk, Faridabad, Haryana - 121001",
-        phone: "+91-7905377279",
+        phone: "+91-7068821740",
         email: "info@go2abroad.co",
         map: "https://www.google.com/maps?q=B-395%2C%202nd%20Floor%2C%20Nehru%20Ground%2C%20Neelam%20Chowk%2C%20Faridabad%2C%20Haryana%20121001&output=embed",
         direction: "https://www.google.com/maps/search/?api=1&query=B-395%2C+2nd+Floor%2C+Nehru+Ground%2C+Neelam+Chowk%2C+Faridabad%2C+Haryana+121001"
       },
       branchOffice: {
         address: "SCO-223, Sector 13-17 Main Road, HUDA, Panipat, Haryana - 132104",
-        phone: "+91-7905377279",
+        phone: "+91-7068821740",
         email: "info@go2abroad.co",
         map: "https://www.google.com/maps?q=SCO-223%2C%20Sector%2013-17%20Main%20Road%2C%20HUDA%2C%20Panipat%2C%20Haryana%20132104&output=embed",
         direction: "https://www.google.com/maps/search/?api=1&query=SCO-223%2C+Sector+13-17+Main+Road%2C+HUDA%2C+Panipat%2C+Haryana+132104"
